@@ -1,0 +1,16 @@
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.pdb
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\bin\Debug\AutoMapper.dll
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\bin\Debug\BusinessEntityLayer.dll
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\bin\Debug\EntityFramework.dll
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\bin\Debug\BusinessEntityLayer.pdb
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\bin\Debug\DataAccessLayer.pdb
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\bin\Debug\DataAccessLayer.dll.config
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\bin\Debug\AutoMapper.xml
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\bin\Debug\EntityFramework.xml
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.AssemblyReference.cache
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CoreCompileInputs.cache
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.csproj.CopyComplete
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.dll
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--Angular\ASP.NET-Backend\BusinessLogicLayer\obj\Debug\BusinessLogicLayer.pdb
