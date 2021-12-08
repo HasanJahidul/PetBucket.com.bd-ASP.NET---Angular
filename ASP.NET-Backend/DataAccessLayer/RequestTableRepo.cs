@@ -18,6 +18,10 @@ namespace DataAccessLayer
         {
             return db.RequestTables.ToList();
         }
+        public static RequestTable GetRequestById(int id)
+        {
+            return db.RequestTables.Where(r => r.id == id).FirstOrDefault();
+        }
         public static RequestTable Get(int id)
         {
             return db.RequestTables.FirstOrDefault(x => x.id == id);

@@ -13,17 +13,14 @@ namespace BusinessLogicLayer
     {
          public static List<RequestTableModel> GetAllRequests()
         {
-            var config = new MapperConfiguration(c =>
-            {
-                c.CreateMap<RequestTable, RequestTableModel>();
-
-            });
-            var mapper = new Mapper(config);
-            var result = mapper.Map<List<RequestTableModel>>(RequestTableRepo.GetAllRequests());
+            var config = new MapperConfiguration(cfg =>cfg.CreateMap<RequestTable, RequestTableModel>());
+            var mapper = config.CreateMapper();
+            var requestList = RequestTableRepo.GetAllRequests();
+            var result = mapper.Map<List<RequestTable>, List<RequestTableModel>>(requestList);
             return result;
         }
         //add new pet
-        public static void Add(RequestTableModel pet)
+        public static void AddRequest(RequestTableModel pet)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -34,15 +31,13 @@ namespace BusinessLogicLayer
             var result = mapper.Map<RequestTableModel, RequestTable>(pet);
             RequestTableRepo.Add(result);
         }
-        public static List<RequestTableModel> Get(int id)
+        //get request by id
+        public static RequestTableModel GetRequestById(int id)
         {
-            var config = new MapperConfiguration(c =>
-            {
-                c.CreateMap<RequestTable, RequestTableModel>();
-
-            });
-            var mapper = new Mapper(config);
-            var result = mapper.Map<List<RequestTableModel>>(RequestTableRepo.Get(id));
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<RequestTable, RequestTableModel>());
+            var mapper = config.CreateMapper();
+            var request = RequestTableRepo.GetRequestById(id);
+            var result = mapper.Map<RequestTable, RequestTableModel>(request);
             return result;
         }
 

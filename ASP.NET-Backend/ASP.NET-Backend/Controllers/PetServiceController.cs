@@ -19,9 +19,16 @@ namespace ASP.NET_Backend.Controllers
         }
         [Route("api/PetService/Get/{id}")]
         [HttpGet]
-        public List<RequestTableModel> Get(int id)
+        public RequestTableModel Get(int id)
         {
-            return PetService.Get(id);
+            return PetService.GetRequestById(id);
+        }
+        //route to add a new request
+        [Route("api/PetService/Add")]
+        [HttpPost]
+        public void Add(RequestTableModel request)
+        {
+            PetService.AddRequest(request);
         }
 
     }
