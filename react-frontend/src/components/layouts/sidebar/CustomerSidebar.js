@@ -10,12 +10,12 @@ const CustomerSidebar = () => {
     <ul class="sidebar-navigation">
         <li class="header">Navigation</li>
         <li>
-            <a href="/Customer/CustomerDashboard">
+            <a href="/CustomerDashboard">
                 <i class="fa fa-home" aria-hidden="true"></i> Homepage
             </a>
         </li>
         <li>
-            <a href="/">
+            <a href="/customer/edit-profile">
                 <i class="fa fa-tachometer" aria-hidden="true"></i> Edit Profile
             </a>
         </li>
@@ -33,33 +33,33 @@ const CustomerSidebar = () => {
 
         <li class="header">Another Menu</li>
         <li>
-            <a href="/CustomerServices/PetDayCare">
+            <a href="/PetService/PetDayCare">
                 <i class="fa fa-users" aria-hidden="true"></i> Pet Day Care
             </a>
         </li>
         <li>
-            <a href="/CustomerServices/DogWalking">
+            <a href="/PetService/DogWalking">
                 <i class="fa fa-cog" aria-hidden="true"></i> Dog Walking
             </a>
         </li>
         <li>
-            <a href="/CustomerServices/PetTaxi">
+            <a href="/PetService/PetTaxi">
                 <i class="fa fa-info-circle" aria-hidden="true"></i> Pet Taxi
             </a>
         </li>
         <li>
-            <a href="/CustomerServices/PetSitting">
+            <a href="/PetService/PetSitting">
                 <i class="fa fa-info-circle" aria-hidden="true"></i> Pet Sitting
             </a>
         </li>
         <li>
 
-            <a href="/CustomerServices/PetTraining">
+            <a href="/PetService/PetTraining">
                 <i class="fa fa-info-circle" aria-hidden="true"></i> Pet Training
             </a>
         </li>
         <li>
-            <a href="/CustomerServices/PetGromming">
+            <a href="/PetService/PetGromming">
                 <i class="fa fa-info-circle" aria-hidden="true"></i> Pet Gromming
             </a>
         </li>

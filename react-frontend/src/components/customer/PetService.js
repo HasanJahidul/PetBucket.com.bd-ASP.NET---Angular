@@ -68,7 +68,7 @@ const PetService = (props) => {
 
                     </div>
                     <div class="button">
-                        <input type="submit" value="Submit Request"/>
+                        <input type="submit" value={props.buttonName}/>
                     </div>
                     
                 
