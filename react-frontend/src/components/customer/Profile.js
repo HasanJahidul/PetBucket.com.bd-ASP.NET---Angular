@@ -11,14 +11,15 @@ import {
     Col,
   } from "reactstrap";
   // core components
-  import UserHeader from "../layouts/Header.js";
+  import CustomerNav from "../layouts/navbar/CustomerNav.js";
+  import CustomerSidebar from "../layouts/sidebar/CustomerSidebar.js";
   
   const Profile = () => {
     return (
       <>
-        <UserHeader />
-        {/* Page content */}
-        <Container className="mt--7" fluid>
+        <CustomerNav />
+       {/* Page content */}
+       <Container className="mt--7" fluid>
           <Row>
             <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
               <Card className="card-profile shadow">
@@ -306,6 +307,7 @@ import {
             </Col>
           </Row>
         </Container>
+        
       </>
     );
   };

@@ -1,45 +1,47 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import './assets/css/register.css';
+import './App.css'
+import './assets/css/Sidebar.css';
+import './assets/css/ServiceForm.css';
+import './assets/css/Site.css';
+import './assets/css/Table.css';
 
-import "./assets/plugins/nucleo/css/nucleo.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "./assets/scss/argon-dashboard-react.scss";
+
+
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import Icons from './components/Icons';
-import Tables from "./components/Tables";
-import Profile from "./components/customer/Profile";
-import Index from './components/Index2';
-import Auth from './components/auth/Auth';
+import LandingPage from './components/LandingPage';
+import CustomerDashboard from './components/customer/Dashboard';
+import PetService from "./components/customer/PetService";
 
 
 function App() {
   return (
     <> 
     <Router>
-    <Switch>  
+    <Switch>
     <Route exact path="/" >
+      <LandingPage />
+    </Route>  
+    <Route exact path="/register" >
       <Register />
     </Route>
     <Route exact path="/login" >
       <Login />
     </Route>
-    <Route exact path="/icons" >
-      <Icons />
+    <Route exact path="/CustomerDashboard" >
+      <CustomerDashboard />
     </Route>
-    <Route exact path="/tables" >
-      <Tables />
-    </Route>
-    <Route exact path="/profile" >
-      <Profile />
-    </Route>
-    <Route exact path="/index" >
-      <Index />
-    </Route>
-    <Route exact path="/auth" >
-      <Auth />
-    </Route>
+    <Route exact path="/PetService/dog-walking"
+            children={
+              <PetService
+                serviceName="Dog Walking"
+                buttonName="Book Service"
+              />
+            }
+          ></Route>
+    
     </Switch>
 
     </Router> 
