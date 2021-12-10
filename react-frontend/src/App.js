@@ -15,6 +15,12 @@ import LandingPage from './components/LandingPage';
 import CustomerDashboard from './components/customer/Dashboard';
 import PetService from "./components/customer/PetService";
 
+//-------------ADMIN--------------------
+
+import AdminDashboard from "./components/admin/AdminDashboard";
+import AddCustomer from "./components/admin/AddCustomer";
+import AdminDetails from "./components/admin/AdminDetails";
+
 
 function App() {
   return (
@@ -41,7 +47,20 @@ function App() {
               />
             }
           ></Route>
-    
+
+
+
+    {/* ADMIN */}
+    <Route exact path="/AdminDashboard" >
+      <AdminDashboard />
+    </Route>
+    <Route exact path="/AddCustomer" >
+      <AddCustomer />
+    </Route>
+    <Route exact path="/AdminDetails" >
+      <AdminDetails />
+    </Route>
+
     </Switch>
 
     </Router> 
