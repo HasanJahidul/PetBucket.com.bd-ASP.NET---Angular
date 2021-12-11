@@ -9,9 +9,11 @@ using System.Web.Http;
 using System.IO;
 using System.Collections.Specialized;
 using System.Web;
+using System.Web.Http.Cors;
 
 namespace ASP.NET_Backend.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class PetServiceController : ApiController
     {
         [Route("api/PetService/GetAll")]

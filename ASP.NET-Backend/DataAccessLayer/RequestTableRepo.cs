@@ -6,42 +6,34 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class RequestTableRepo
+    public class RequestTableRepo : IReqRepo<RequestTable, int>
     {
-        static PetBucketEntities db;
-
-        static RequestTableRepo()
+        PetBucketEntities db;
+        public RequestTableRepo(PetBucketEntities db)
         {
-            db = new PetBucketEntities();
+            this.db = db;
         }
-        public static List<RequestTable> GetAllRequests()
+        public void AddRequest(RequestTable p)
+        {
+            db.RequestTables.Add(p);
+            db.SaveChanges();
+        }
+
+        public void EditRequest(RequestTable p)
+        {
+            var req = db.RequestTables.FirstOrDefault(x => x.id == p.id);
+            db.Entry(req).CurrentValues.SetValues(p);
+            db.SaveChanges();
+        }
+
+        public List<RequestTable> GetAllRequest()
         {
             return db.RequestTables.ToList();
         }
-        public static RequestTable GetRequestById(int id)
+
+        public RequestTable GetReqByCusId(int id)
         {
-            return db.RequestTables.Where(r => r.id == id).FirstOrDefault();
-        }
-        public static RequestTable Get(int id)
-        {
-            return db.RequestTables.FirstOrDefault(x => x.id == id);
-        }
-        public static void Add(RequestTable request)
-        {
-            db.RequestTables.Add(request);
-            db.SaveChanges();
-        }
-        public static void Update(RequestTable request)
-        {
-            var req = db.RequestTables.FirstOrDefault(x => x.id == request.id);
-            db.Entry(req).CurrentValues.SetValues(request);
-            db.SaveChanges();
-        }
-        public static void Delete(int id)
-        {
-            RequestTable request = db.RequestTables.FirstOrDefault(x => x.id == id);
-            db.RequestTables.Remove(request);
-            db.SaveChanges();
+            return db.RequestTables.FirstOrDefault(x => x.customer_id == id);
         }
     }
 }

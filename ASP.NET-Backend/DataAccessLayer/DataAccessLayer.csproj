@@ -52,6 +52,9 @@
       <DependentUpon>PetBucketEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CustomerRepo.cs" />
+    <Compile Include="DataAccessFactory.cs" />
+    <Compile Include="IReqRepo.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="Login.cs">
       <DependentUpon>PetBucketEntities.tt</DependentUpon>
     </Compile>

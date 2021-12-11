@@ -6,6 +6,7 @@ import './assets/css/Sidebar.css';
 import './assets/css/ServiceForm.css';
 import './assets/css/Site.css';
 import './assets/css/Table.css';
+import 'mdbreact/dist/css/mdb.css';
 
 
 
