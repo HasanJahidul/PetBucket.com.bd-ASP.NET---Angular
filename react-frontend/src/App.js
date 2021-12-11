@@ -17,6 +17,12 @@ import CustomerDashboard from './components/customer/Dashboard';
 import PetService from "./components/customer/PetService";
 import Profile from "./components/customer/Profile";
 
+//-------------ADMIN--------------------
+
+import AdminDashboard from "./components/admin/AdminDashboard";
+import AddCustomer from "./components/admin/AddCustomer";
+import AdminDetails from "./components/admin/AdminDetails";
+
 
 function App() {
   return (
@@ -46,6 +52,7 @@ function App() {
     <Route exact path="/CustomerDashboard" >
       <CustomerDashboard />
     </Route>
+
     <Route
       exact path="/customer/edit-profile"
         children=
@@ -112,7 +119,28 @@ function App() {
           />
         }
       ></Route>
-    
+    {/* =========== admin=================*/}
+    <Route exact path="/PetService/dog-walking"
+            children={
+              <PetService
+                serviceName="Dog Walking"
+                buttonName="Book Service"
+              />
+            }
+          ></Route>
+
+
+
+    {/* ADMIN */}
+    <Route exact path="/AdminDashboard" >
+      <AdminDashboard />
+    </Route>
+    <Route exact path="/AddCustomer" >
+      <AddCustomer />
+    </Route>
+    <Route exact path="/AdminDetails" >
+      <AdminDetails />
+    </Route>
     
     </Switch>
 
