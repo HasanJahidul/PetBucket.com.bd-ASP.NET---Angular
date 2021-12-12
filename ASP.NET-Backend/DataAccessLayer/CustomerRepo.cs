@@ -5,34 +5,35 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccessLayer
-{
-    public static class CustomerRepo
+{ 
+    public class CustomerRepo : IRepository<Customer, int>
     {
-        static PetBucketEntities db;
-        static CustomerRepo()
+        PetBucketEntities db;
+        public CustomerRepo(PetBucketEntities db)
         {
-            db = new PetBucketEntities();
+            this.db = db;
         }
-        public static List<Customer> GetAllCustomers()
+        public void AddCustomer(Customer p)
+        {
+            db.Customers.Add(p);
+            db.SaveChanges();
+        }
+
+        public void EditCustomer(Customer p)
+        {
+            var req = db.Customers.FirstOrDefault(x => x.id == p.id);
+            db.Entry(req).CurrentValues.SetValues(p);
+            db.SaveChanges();
+        }
+
+        public List<Customer> GetAllCustomers()
         {
             return db.Customers.ToList();
         }
-        public static void AddCustomer(Customer customer)
-        {
-            db.Customers.Add(customer);
-            db.SaveChanges();
-        }
-        public static void EditCustomer(Customer customer)
-        {
-           var cus= db.Customers.FirstOrDefault(c =>c.id==customer.id);
-            db.Entry(cus).CurrentValues.SetValues(customer);
-            db.SaveChanges();
-        }
-        //get customer by id
-        public static Customer GetCustomerById(int id)
-        {
-            return db.Customers.FirstOrDefault(c => c.id == id);
-        }
 
+        public Customer GetCustomerById(int id)
+        {
+            return db.Customers.FirstOrDefault(x => x.id == id);
+        }
     }
 }

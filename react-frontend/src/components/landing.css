@@ -1,0 +1,17 @@
+.section-title-big {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+    padding-bottom: 16px;
+}
+div {
+    font-family: 'Heebo', sans-serif;
+}
+p {
+    display: block;
+    float:left;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
