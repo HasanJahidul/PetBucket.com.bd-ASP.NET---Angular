@@ -1,10 +1,12 @@
 import React from 'react'
 import AdminSidebar from '../layouts/sidebar/AdminSidebar'
+import UserDetailsContainer from '../UserDetailsContainer';
 
-const AdminDetails = () => {
+
+const UserDetails = (props) => {
     return (
         <>
-            <AdminSidebar/>  
+            <AdminSidebar/>
             <div class="content-container">
 
     <div class="container-fluid">
@@ -14,7 +16,7 @@ const AdminDetails = () => {
                 <div class="row">
                     <div class="col-12 mt-3 mb-1">
                         <h4 class="text-uppercase">Pet Bucket</h4>
-                        <p>Admin Details</p>
+                        <p>{props.header}</p>
                     </div>
                     <div class="col-xl-3 col-sm-6 col-12">
                             <div class="card">
@@ -264,53 +266,10 @@ const AdminDetails = () => {
                 </div>
             </section>
 
-            <section id="stats-subtitle">
-                <div class="row">
-                    <div class="col-12 mt-3 mb-1">
-                        <h4 class="text-uppercase">Admin Profile</h4>
-                        {/* <h4 class="primary">@Html.DisplayFor(model => model.name)</h4> */}
-                    </div>
-                </div>
-                <div>
-                    <hr />
-                    <table >
-                        <tr>
-                            <td class="primary">Name</td>
-                            {/* <td class="danger"> @Html.DisplayFor(model => model.name)</td> */}
-                        </tr>
-                        <tr>
-                            <td class="primary">Email</td>
-                            {/* <td class="danger">@Html.DisplayFor(model => model.email)</td> */}
-                        </tr>
-                        <tr>
-                            <td class="primary">Address</td>
-                            {/* <td class="danger">@Html.DisplayFor(model => model.address)</td> */}
-                        </tr>
-                        <tr>
-                            <td class="primary">Phone Number</td>
-                            {/* <td class="danger">@Html.DisplayFor(model => model.phone)</td> */}
-                        </tr>
-                        <tr>
-                            <td class="primary">NID Number</td>
-                            {/* <td class="danger">@Html.DisplayFor(model => model.nid)</td> */}
-                        </tr>
-                        <tr>
-                            <td class="primary">Current Profit</td>
-                            {/* <td class="danger">@Html.DisplayFor(model => model.profit)</td> */}
-                        </tr>
-                        <tr>     
-                            <td>
-                            <a href="/AdminProfileEdit">
-                                <div class="button">
-                                <input type="submit" value="Edit Profile"/>
-                                </div>
-                            </a>                   
-                            </td>
-                        </tr>
-
-                    </table>
-                </div>
-            </section>
+            <UserDetailsContainer 
+                title={props.title}
+                link={props.link}
+            />
         </div>
     </div>
 </div>
@@ -318,4 +277,4 @@ const AdminDetails = () => {
     )
 }
 
-export default AdminDetails
+export default UserDetails
