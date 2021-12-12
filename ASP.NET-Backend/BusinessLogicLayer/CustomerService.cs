@@ -11,11 +11,12 @@ namespace BusinessLogicLayer
 {
     public class CustomerService
     {
+        
         public static List<CustomerModel> GetAllCustomers()
         {
-           var config = new MapperConfiguration(cfg => cfg.CreateMap<Customer, CustomerModel>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Customer, CustomerModel>());
             var mapper = config.CreateMapper();
-            var customers = CustomerRepo.GetAllCustomers();
+            var customers = DataAccessFactory.CustomerDataAccess().GetAllCustomers();
             var result = mapper.Map<List<Customer>, List<CustomerModel>>(customers);
             return result;
         }
@@ -23,7 +24,7 @@ namespace BusinessLogicLayer
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Customer, CustomerModel>());
             var mapper = config.CreateMapper();
-            var customer = CustomerRepo.GetCustomerById(id);
+            var customer = DataAccessFactory.CustomerDataAccess().GetCustomerById(id);
             var result = mapper.Map<Customer, CustomerModel>(customer);
             return result;
         }
@@ -32,7 +33,7 @@ namespace BusinessLogicLayer
             var config= new MapperConfiguration(c=>c.CreateMap<CustomerModel, Customer>());
             var mapper =new Mapper(config);
             var result = mapper.Map<CustomerModel,Customer>(customer);
-            CustomerRepo.AddCustomer(result);
+            DataAccessFactory.CustomerDataAccess().AddCustomer(result);
                 
            
         }
@@ -41,7 +42,7 @@ namespace BusinessLogicLayer
             var config = new MapperConfiguration(c => c.CreateMap<CustomerModel, Customer>());
             var mapper = new Mapper(config);
             var result = mapper.Map<CustomerModel, Customer>(customer);
-            CustomerRepo.EditCustomer(result);
+            DataAccessFactory.CustomerDataAccess().EditCustomer(result);
         }
         
     }

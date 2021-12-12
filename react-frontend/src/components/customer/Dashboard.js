@@ -1,11 +1,33 @@
-import React from 'react'
-import { Link } from "react-router-dom";
 import CustomerSidebar from '../layouts/sidebar/CustomerSidebar'
+import React, { useEffect, useState } from "react";
 
 const Dashboard = () => {
+  const [search, setSearch] = useState("");
+  const [reqList, setReqList] = useState([]);
+//   useEffect(() => {
+//     fetch(`https://localhost:44398/api/PetService/GetAll`).then(
+//       (response) => {
+//         response.json().then((result) => {
+//             setReqList(result);
+//         });
+//       }
+//     );
+//   }, []);
+// fetch json data from api
+    useEffect(() => {
+        fetch(`https://localhost:44398/api/PetService/GetAll`).then(
+            (response) => {
+                response.json().then((result) => {
+                    setReqList(result);
+                });
+            }
+        );
+    }, []);
+            
     return (
         <>
         <CustomerSidebar/>  
+     
         <div class="content-container">
 
 <div class="container-fluid">
@@ -171,196 +193,81 @@ const Dashboard = () => {
         </section>
 
         <section id="stats-subtitle">
-            <div class="row">
-                <div class="col-12 mt-3 mb-1">
-                    <h4 class="text-uppercase">History</h4>
-                    <p>Taken Service Details.</p>
-                    @Session["type"]
+                <div class="row">
+                    <div class="col-12 mt-3 mb-1">
+                        <h4 class="text-uppercase">History</h4>
+                        <p>Taken Service Details.</p>
+                        
+                    </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="limiter">
-                    <div class="container-table100">
-                        <div class="wrap-table100">
-                            <div class="table100 ver1">
-                                <div class="table100-firstcol">
-                                    <table>
-                                        <thead>
-                                            <tr class="row100 head">
-                                                <th class="cell100 column1">Employees</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="row100 body">
-                                                <td class="cell100 column1">Brandon Green</td>
-                                            </tr>
+                <div class="row">
+                     <input className="btn-primary btn-simple input-group" type="text"
+                                placeholder="searching"
+                                onChange={e => {setSearch(e.target.value)}}
+                            />
+                    <div class="limiter">
+                        <div class="container-table100">
+                            <div class="wrap-table100">
+                                <div class="table100 ver1">
+                                    <div class="wrap-table100-nextcols js-pscroll">
+                                        <div class="table100">
+                                            <table>
+                                                <thead>
+                                                    <tr class="row100 head">
+                                                        <th class=" danger cell100 column2">Name</th>
+                                                        <th class=" danger cell100 column3">Date</th>
+                                                        <th class="danger cell100 column4">Duration</th>
+                                                        <th class=" danger cell100 column5">Amount</th>
+                                                        <th class="danger cell100 column6">Phone</th>
+                                                        <th class=" danger cell100 column7">Pet Details</th>
+                                                        <th class="danger cell100 column8">Request  Details</th>
 
-                                            <tr class="row100 body">
-                                                <td class="cell100 column1">Kathy Daniels</td>
-                                            </tr>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                {reqList.filter((val) => {
+                                                if (search == "") {
+                                                    return val
+                                                }
+                                            else if (val.name.toLowerCase().includes(search.toLowerCase()))
+                                            {
+                                                return val
+                                            }else if (val.date.toLowerCase().includes(search.toLowerCase()))
+                                            {
+                                                return val
+                                            }
+                                            
+                                            else if (val.phone.includes(search.toLowerCase()))
+                                            {
+                                                return val
+                                            }
 
-                                            <tr class="row100 body">
-                                                <td class="cell100 column1">Elizabeth Alvarado</td>
-                                            </tr>
-
-                                            <tr class="row100 body">
-                                                <td class="cell100 column1">Michael Coleman</td>
-                                            </tr>
-
-                                            <tr class="row100 body">
-                                                <td class="cell100 column1">Jason Cox</td>
-                                            </tr>
-
-                                            <tr class="row100 body">
-                                                <td class="cell100 column1">Christian Perkins</td>
-                                            </tr>
-
-                                            <tr class="row100 body">
-                                                <td class="cell100 column1">Emily Wheeler</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="wrap-table100-nextcols js-pscroll">
-                                    <div class="table100-nextcols">
-                                        <table>
-                                            <thead>
-                                                <tr class="row100 head">
-                                                    <th class="cell100 column2">Position</th>
-                                                    <th class="cell100 column3">Start date</th>
-                                                    <th class="cell100 column4">Last Activity</th>
-                                                    <th class="cell100 column5">Contacts</th>
-                                                    <th class="cell100 column6">Age</th>
-                                                    <th class="cell100 column7">Address</th>
-                                                    <th class="cell100 column8">Card No</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="row100 body">
-                                                    <td class="cell100 column2">CMO</td>
-                                                    <td class="cell100 column3">16 Nov 2012</td>
-                                                    <td class="cell100 column4">16 Nov 2017</td>
-                                                    <td class="cell100 column5">brandon94@example.com</td>
-                                                    <td class="cell100 column6">30</td>
-                                                    <td class="cell100 column7">New York City, NY</td>
-                                                    <td class="cell100 column8">424242xxxxxx6262</td>
-                                                </tr>
-
-                                                <tr class="row100 body">
-                                                    <td class="cell100 column2">Marketing</td>
-                                                    <td class="cell100 column3">16 Nov 2015</td>
-                                                    <td class="cell100 column4">30 Nov 2017</td>
-                                                    <td class="cell100 column5">kathy_82@example.com</td>
-                                                    <td class="cell100 column6">26</td>
-                                                    <td class="cell100 column7">New York City, NY</td>
-                                                    <td class="cell100 column8">424242xxxxxx1616</td>
-                                                </tr>
-
-                                                <tr class="row100 body">
-                                                    <td class="cell100 column2">CFO</td>
-                                                    <td class="cell100 column3">16 Nov 2013</td>
-                                                    <td class="cell100 column4">30 Nov 2017</td>
-                                                    <td class="cell100 column5">elizabeth82@example.com</td>
-                                                    <td class="cell100 column6">32</td>
-                                                    <td class="cell100 column7">New York City, NY</td>
-                                                    <td class="cell100 column8">424242xxxxxx5326</td>
-                                                </tr>
-
-                                                <tr class="row100 body">
-                                                    <td class="cell100 column2">Designer</td>
-                                                    <td class="cell100 column3">16 Nov 2013</td>
-                                                    <td class="cell100 column4">30 Nov 2017</td>
-                                                    <td class="cell100 column5">michael94@example.com</td>
-                                                    <td class="cell100 column6">22</td>
-                                                    <td class="cell100 column7">New York City, NY</td>
-                                                    <td class="cell100 column8">424242xxxxxx6328</td>
-                                                </tr>
-
-                                                <tr class="row100 body">
-                                                    <td class="cell100 column2">Developer</td>
-                                                    <td class="cell100 column3">16 Nov 2017</td>
-                                                    <td class="cell100 column4">30 Nov 2017</td>
-                                                    <td class="cell100 column5">jasoncox@example.com</td>
-                                                    <td class="cell100 column6">25</td>
-                                                    <td class="cell100 column7">New York City, NY</td>
-                                                    <td class="cell100 column8">424242xxxxxx7648</td>
-                                                </tr>
-
-                                                <tr class="row100 body">
-                                                    <td class="cell100 column2">Sale</td>
-                                                    <td class="cell100 column3">16 Nov 2016</td>
-                                                    <td class="cell100 column4">30 Nov 2017</td>
-                                                    <td class="cell100 column5">christian_83@example.com</td>
-                                                    <td class="cell100 column6">28</td>
-                                                    <td class="cell100 column7">New York City, NY</td>
-                                                    <td class="cell100 column8">424242xxxxxx4152</td>
-                                                </tr>
-
-                                                <tr class="row100 body">
-                                                    <td class="cell100 column2">Support</td>
-                                                    <td class="cell100 column3">16 Nov 2013</td>
-                                                    <td class="cell100 column4">30 Nov 2017</td>
-                                                    <td class="cell100 column5">emily90@example.com</td>
-                                                    <td class="cell100 column6">24</td>
-                                                    <td class="cell100 column7">New York City, NY</td>
-                                                    <td class="cell100 column8">424242xxxxxx6668</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                            }).map((u) => {
+                                                    return (
+                                                        
+                                                        <tr class="row100 body">
+                                                            <td class="cell100 column2"> {u.name}</td>
+                                                            <td class="cell100 column3"> {u.date}</td>
+                                                            <td class="cell100 column4"> {u.duration}</td>
+                                                            <td class="cell100 column5"> {u.amount}</td>
+                                                            <td class="cell100 column6"> {u.phone}</td>
+                                                            <td class="cell100 column7"> {u.petdetails}</td>
+                                                            <td class="cell100 column8"> {u.requestdetails}</td>
+                                                        </tr>
+                                                    );
+                                                })
+                                            }
+                                                    </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            {/*<div class="row">
-                <div class="col-xl-6 col-md-12">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="card-body cleartfix">
-                                <div class="media align-items-stretch">
-                                    <div class="align-self-center">
-                                        <h1 class="mr-2">$76,456.00</h1>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Total Sales</h4>
-                                        <span>Monthly Sales Amount</span>
-                                    </div>
-                                    <div class="align-self-center">
-                                        <i class="icon-heart danger font-large-2"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-6 col-md-12">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="card-body cleartfix">
-                                <div class="media align-items-stretch">
-                                    <div class="align-self-center">
-                                        <h1 class="mr-2">$36,000.00</h1>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Total Cost</h4>
-                                        <span>Monthly Cost</span>
-                                    </div>
-                                    <div class="align-self-center">
-                                        <i class="icon-wallet success font-large-2"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>*/}
-        </section>
+            </section>
     </div>
 </div>
 </div>

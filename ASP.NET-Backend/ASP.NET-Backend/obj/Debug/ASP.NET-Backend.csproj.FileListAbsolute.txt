@@ -154,3 +154,6 @@ D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\ASP.NET-Bac
 D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\ASP.NET-Backend\obj\Debug\ASP.NET-Backend.csproj.CopyComplete
 D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\ASP.NET-Backend\obj\Debug\ASP.NET-Backend.dll
 D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\ASP.NET-Backend\obj\Debug\ASP.NET-Backend.pdb
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\ASP.NET-Backend\bin\System.Web.Cors.dll
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\ASP.NET-Backend\bin\System.Web.Http.Cors.dll
+D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\ASP.NET-Backend\bin\System.Web.Http.Cors.xml
