@@ -25,7 +25,7 @@ const AdminSidebar = () => {
                 <i class="fa fa-tachometer" aria-hidden="true"></i> Request Details
             </a>
         </li>
-        <li class="header">All LIST</li>
+        <li class="header"><h2 class="danger">USER LIST</h2></li>
 
         <li>
             <a href="/CustomerList">
@@ -43,7 +43,7 @@ const AdminSidebar = () => {
             </a>
         </li>
 
-        <li class="header">ADD USER</li>
+        <li class="header"><h2 class="danger">ADD USER</h2></li>
         <li>
             <a href="/AddCustomer">
                 <i class="fa fa-users" aria-hidden="true"></i> Add Customer
@@ -59,7 +59,7 @@ const AdminSidebar = () => {
                 <i class="fa fa-info-circle" aria-hidden="true"></i> Add Agencey
             </a>
         </li>
-        <li class="header">OTHERS</li>
+        <li class="header"><h2 class="danger">OTHERS</h2></li>
         <li>
             <a href="/Report">
                 <i class="fa fa-info-circle" aria-hidden="true"></i> Report
