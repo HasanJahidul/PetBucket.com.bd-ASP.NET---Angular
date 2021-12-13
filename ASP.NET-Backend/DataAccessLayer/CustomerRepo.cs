@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccessLayer
-{ 
+{
     public class CustomerRepo : IRepository<Customer, int>
     {
         PetBucketEntities db;
@@ -16,7 +16,8 @@ namespace DataAccessLayer
         public void AddCustomer(Customer p)
         {
             db.Customers.Add(p);
-            db.SaveChanges();
+            //db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT PetBucket.Customers ON;");
+            var v = db.SaveChanges();
         }
 
         public void EditCustomer(Customer p)
@@ -33,7 +34,14 @@ namespace DataAccessLayer
 
         public Customer GetCustomerById(int id)
         {
+            
             return db.Customers.FirstOrDefault(x => x.id == id);
+        }
+        public void DeleteCustomer(int id)
+        {
+            var req = db.Customers.FirstOrDefault(x => x.id == id);
+            db.Customers.Remove(req);
+            db.SaveChanges();
         }
     }
 }

@@ -78,9 +78,6 @@
       <DependentUpon>PetBucketEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="RequestTableRepo.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>PetBucketEntities.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

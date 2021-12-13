@@ -32,30 +32,18 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="customer_id" Type="int" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="100" Nullable="false" />
-          <Property Name="email" Type="nchar" MaxLength="100" Nullable="false" />
-          <Property Name="nid" Type="nchar" MaxLength="100" Nullable="false" />
-          <Property Name="address" Type="nchar" MaxLength="100" Nullable="false" />
-          <Property Name="date" Type="date" Nullable="false" />
-          <Property Name="petdetails" Type="nchar" MaxLength="1000" Nullable="false" />
-          <Property Name="duration" Type="int" Nullable="false" />
-          <Property Name="phone" Type="nchar" MaxLength="100" Nullable="false" />
-          <Property Name="requestdetails" Type="nchar" MaxLength="1000" Nullable="false" />
-          <Property Name="amount" Type="money" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
+          <Property Name="customer_id" Type="int" />
+          <Property Name="name" Type="nchar" MaxLength="50" />
+          <Property Name="address" Type="nchar" MaxLength="100" />
+          <Property Name="date" Type="date" />
+          <Property Name="petdetails" Type="nchar" MaxLength="1000" />
+          <Property Name="duration" Type="nchar" MaxLength="100" />
+          <Property Name="phone" Type="nchar" MaxLength="100" />
+          <Property Name="requestdetails" Type="nchar" MaxLength="1000" />
+          <Property Name="amount" Type="nchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK_RequestTables_Customers">
-          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
           <End Role="RequestTables" Type="Self.RequestTables" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">
@@ -70,7 +58,6 @@
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Logins" EntityType="Self.Logins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RequestTables" EntityType="Self.RequestTables" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_RequestTables_Customers" Association="Self.FK_RequestTables_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="RequestTables" EntitySet="RequestTables" />
@@ -109,31 +96,19 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="customer_id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="nid" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="address" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="petdetails" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="duration" Type="Int32" Nullable="false" />
-          <Property Name="phone" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="requestdetails" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="customer_id" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="petdetails" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <Property Name="duration" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="requestdetails" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <Property Name="amount" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_RequestTables_Customers" FromRole="RequestTables" ToRole="Customers" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <Association Name="FK_RequestTables_Customers">
-          <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="RequestTables" Type="Self.RequestTable" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customers">
@@ -148,7 +123,6 @@
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Logins" EntityType="Self.Login" />
           <EntitySet Name="RequestTables" EntityType="Self.RequestTable" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <AssociationSet Name="FK_RequestTables_Customers" Association="Self.FK_RequestTables_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="RequestTables" EntitySet="RequestTables" />
@@ -190,8 +164,6 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="nid" ColumnName="nid" />
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="petdetails" ColumnName="petdetails" />
@@ -199,17 +171,6 @@
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="requestdetails" ColumnName="requestdetails" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="PetBucketModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -6,9 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ASP.NET_Backend.Controllers
 {
+
+    [EnableCors("*", "*", "*")]
     public class CustomerController:ApiController
     {
         [Route("api/CustomerService/AllCustomers")]
@@ -37,6 +40,13 @@ namespace ASP.NET_Backend.Controllers
         public void Put([FromBody]CustomerModel customer)
         {
             CustomerService.EditCustomer(customer);
+        }
+        //route for deleting a customer by id
+        [Route("api/CustomerService/DeleteCustomer/{id}")]
+        [HttpDelete]
+        public void Delete(int id)
+        {
+            CustomerService.DeleteCustomer(id);
         }
     }
 }

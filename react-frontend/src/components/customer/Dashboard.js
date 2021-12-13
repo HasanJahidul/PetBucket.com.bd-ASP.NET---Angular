@@ -2,18 +2,8 @@ import CustomerSidebar from '../layouts/sidebar/CustomerSidebar'
 import React, { useEffect, useState } from "react";
 
 const Dashboard = () => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const [reqList, setReqList] = useState([]);
-//   useEffect(() => {
-//     fetch(`https://localhost:44398/api/PetService/GetAll`).then(
-//       (response) => {
-//         response.json().then((result) => {
-//             setReqList(result);
-//         });
-//       }
-//     );
-//   }, []);
-// fetch json data from api
     useEffect(() => {
         fetch(`https://localhost:44398/api/PetService/GetAll`).then(
             (response) => {
@@ -191,83 +181,95 @@ const Dashboard = () => {
                 </div>
             </div>
         </section>
-
-        <section id="stats-subtitle">
+            <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
                 <div class="row">
-                    <div class="col-12 mt-3 mb-1">
-                        <h4 class="text-uppercase">History</h4>
-                        <p>Taken Service Details.</p>
-                        
+                    <div class="col-sm-8"><h2>Customer <b>Details</b></h2></div>
+                    <div class="col-sm-4">
+                        <div class="search-box">
+                            <i class="material-icons">&#xE8B6;</i>
+                            <input type="text" class="form-control" placeholder="Search&hellip;" onChange={e => {setSearch(e.target.value)}}/>
+                        </div>
                     </div>
                 </div>
-
-                <div class="row">
-                     <input className="btn-primary btn-simple input-group" type="text"
-                                placeholder="searching"
-                                onChange={e => {setSearch(e.target.value)}}
-                            />
-                    <div class="limiter">
-                        <div class="container-table100">
-                            <div class="wrap-table100">
-                                <div class="table100 ver1">
-                                    <div class="wrap-table100-nextcols js-pscroll">
-                                        <div class="table100">
-                                            <table>
-                                                <thead>
-                                                    <tr class="row100 head">
-                                                        <th class=" danger cell100 column2">Name</th>
-                                                        <th class=" danger cell100 column3">Date</th>
-                                                        <th class="danger cell100 column4">Duration</th>
-                                                        <th class=" danger cell100 column5">Amount</th>
-                                                        <th class="danger cell100 column6">Phone</th>
-                                                        <th class=" danger cell100 column7">Pet Details</th>
-                                                        <th class="danger cell100 column8">Request  Details</th>
-
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                {reqList.filter((val) => {
-                                                if (search == "") {
+            </div>
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name </th>
+                        <th>Date</th>
+                        <th>Duration </th>
+                        <th>Amount</th>
+                        <th>Phone </th>
+                        <th>Pet Details</th>
+                        <th>Request Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {reqList.filter((val) => {
+                                                if (search === "") {
                                                     return val
                                                 }
                                             else if (val.name.toLowerCase().includes(search.toLowerCase()))
                                             {
                                                 return val
-                                            }else if (val.date.toLowerCase().includes(search.toLowerCase()))
+                                            }else if (val.phone.includes(search))
                                             {
                                                 return val
                                             }
-                                            
-                                            else if (val.phone.includes(search.toLowerCase()))
+                                            else if (val.amount.toString().includes(search))
+                                            {
+                                                return val
+                                            }
+                                            else if (val.duration.toString().includes(search))
+                                            {
+                                                return val
+                                            }
+                                            else if (val.date.toString().includes(search))
+                                            {
+                                                return val
+                                            }else if (val.petdetails.toLowerCase().includes(search.toLowerCase()))
+                                            {
+                                                return val
+                                            }
+                                            else if (val.requestdetails.toLowerCase().includes(search.toLowerCase()))
                                             {
                                                 return val
                                             }
 
-                                            }).map((u) => {
-                                                    return (
-                                                        
-                                                        <tr class="row100 body">
-                                                            <td class="cell100 column2"> {u.name}</td>
-                                                            <td class="cell100 column3"> {u.date}</td>
-                                                            <td class="cell100 column4"> {u.duration}</td>
-                                                            <td class="cell100 column5"> {u.amount}</td>
-                                                            <td class="cell100 column6"> {u.phone}</td>
-                                                            <td class="cell100 column7"> {u.petdetails}</td>
-                                                            <td class="cell100 column8"> {u.requestdetails}</td>
-                                                        </tr>
-                                                    );
-                                                })
-                                            }
-                                                    </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                                            }).map((u,id) => {
+                                               
+                                                
+                return (
+                    <tr>
+                        <td>{++id}</td>
+                        <td>{u.name}</td>
+                        <td>{u.date}</td>
+                        <td>{u.duration}</td>
+                        <td>{u.amount}</td>
+                        <td>{u.phone}</td>
+                        <td>{u.petdetails}</td>
+                        <td>{u.requestdetails}</td>
+                        {/* <td>
+                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td> */}
+                
+                </tr>
+                   
+                      );
+                     
+                    })
+                }
+       
+                </tbody>
+            </table>
+        </div>
+    </div>  
+            
     </div>
 </div>
 </div>

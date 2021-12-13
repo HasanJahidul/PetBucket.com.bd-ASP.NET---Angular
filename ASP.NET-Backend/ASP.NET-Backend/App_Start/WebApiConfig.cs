@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace ASP.NET_Backend
 {
@@ -20,6 +22,7 @@ namespace ASP.NET_Backend
                 defaults: new { id = RouteParameter.Optional }
             );
             config.EnableCors();
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
         }
     }
 }

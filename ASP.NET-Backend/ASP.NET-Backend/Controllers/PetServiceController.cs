@@ -10,10 +10,14 @@ using System.IO;
 using System.Collections.Specialized;
 using System.Web;
 using System.Web.Http.Cors;
+using System.Data;
+using Newtonsoft.Json;
 
 namespace ASP.NET_Backend.Controllers
 {
-    [EnableCors("*", "*", "*")]
+     [EnableCors("*", "*", "*")]
+    //enable cors
+    
     public class PetServiceController : ApiController
     {
         [Route("api/PetService/GetAll")]
@@ -31,29 +35,19 @@ namespace ASP.NET_Backend.Controllers
         //route to add a new request
         [Route("api/PetService/Add")]
         [HttpPost]
-        public void Add(RequestTableModel request)
+        public HttpResponseMessage Add(RequestTableModel request)
         {
             PetService.AddRequest(request);
+            var res = new
+            {
+                status = "200",
+                message = "Service booked successfully",
+                test ="test"
+            };
+            string response = JsonConvert.SerializeObject(res);
+            return Request.CreateResponse(HttpStatusCode.OK,response);
         }
-        /*[Route("api/sms")]
-        [HttpGet]
-        public string SMS()
-         {
-             string apikey = "NmI2MjM3NzY0OTZkNjM2ZTM0NzAzNTc2NGQzNTRhNTc=";
-
-             string SenderName = "PETBUCKET ";
-             string Number = "+8801631137535";
-             string Message = "This is an API message";
-             string URL = "https://api.txtlocal.com/send/?";
-             string PostData = "apikey=" + apikey + "&sender=" + SenderName + "&numbers=" + Number + "&message=" + Message;
-             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(URL);
-           
-                HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
-                StreamReader sr = new StreamReader(resp.GetResponseStream());
-                string results = sr.ReadToEnd();
-            return results;
-            
-         }*/
+    
         
 
     }

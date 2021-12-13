@@ -17,6 +17,7 @@ namespace DataAccessLayer
         {
             db.RequestTables.Add(p);
             db.SaveChanges();
+               
         }
 
         public void EditRequest(RequestTable p)

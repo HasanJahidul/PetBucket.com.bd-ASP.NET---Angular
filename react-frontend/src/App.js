@@ -37,10 +37,7 @@ function App() {
       exact path="/register"
         children=
         {
-          <Register
-            title="sign up"
-            buttonName="register"
-          />
+          <Register/>
         }
     ></Route>
 
@@ -69,7 +66,7 @@ function App() {
         children=
         {
           <PetService
-            serviceName="Dog Walking"
+            serviceName="Pet Walking"
             buttonName="Book Service"
           />
         }
@@ -119,8 +116,8 @@ function App() {
           />
         }
       ></Route>
-    {/* =========== admin=================*/}
-    <Route exact path="/PetService/dog-walking"
+      
+       <Route exact path="/PetService/dog-walking"
             children={
               <PetService
                 serviceName="Dog Walking"
@@ -129,6 +126,8 @@ function App() {
             }
           ></Route>
 
+    {/* =========== admin=================*/}
+   
 
 
     {/* ADMIN */}

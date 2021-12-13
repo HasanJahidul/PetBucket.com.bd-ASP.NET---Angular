@@ -44,6 +44,14 @@ namespace BusinessLogicLayer
             var result = mapper.Map<CustomerModel, Customer>(customer);
             DataAccessFactory.CustomerDataAccess().EditCustomer(result);
         }
+        public static void DeleteCustomer(int id)
+        {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Customer, CustomerModel>());
+            var mapper = config.CreateMapper();
+            var customer = DataAccessFactory.CustomerDataAccess().GetCustomerById(id);
+            var result = mapper.Map<Customer, CustomerModel>(customer);
+           
+        }
         
     }
 }

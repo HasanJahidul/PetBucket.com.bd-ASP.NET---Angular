@@ -12,6 +12,7 @@ namespace DataAccessLayer
         void AddCustomer(T p);
         void EditCustomer(T p);
         T GetCustomerById(ID id);
+        void DeleteCustomer(ID id);
 
     }
 }

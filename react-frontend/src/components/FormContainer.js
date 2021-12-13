@@ -12,7 +12,7 @@ const FormContainer = (props) => {
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Full Name</span>
-                        <input name="name" type="text" placeholder="Enter your Name" required/>
+                        <input name="name" type="text" placeholder="Enter your Name" value={props.userData.name} required/>
                     </div>
                     {/* <div class="input-box">
                             <span class="details">Username</span>
@@ -20,7 +20,7 @@ const FormContainer = (props) => {
                         </div> */}
                     <div class="input-box">
                         <span class="details">Email</span>
-                        <input name="email" type="text" placeholder="Enter your email" required/>
+                        <input name="email" type="text" placeholder="Enter your email"  required/>
                     </div>
                     <div class="input-box">
                         <span class="details">Phone Number</span>
@@ -47,7 +47,7 @@ const FormContainer = (props) => {
                     </div>
                 </div>
                 <div class="button">
-                    <input type="submit" value={props.buttonName}/>
+                    <input type="submit"  value={props.buttonName}/>
                 </div>
                 </form>
         </div>
