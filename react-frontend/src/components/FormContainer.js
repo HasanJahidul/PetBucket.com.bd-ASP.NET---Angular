@@ -46,18 +46,17 @@ const FormContainer = (props) => {
                         <input name="confirmpassword" type="text" placeholder="Confirm your password" required/>
                     </div>
                 </div>
+                
+                </form>
                 <div class="button">
                     <input type="submit"  value={props.buttonName}/>
                 </div>
-                </form>
         </div>
 
         {/* <!-- Success Alert --> */}
         <div class="text-success" style={{"align-content":"center"}}>
-          
         </div>
         <div class="text-danger" style={{"align-content":"center"}}>
-           
         </div>
     </div>   
         </>

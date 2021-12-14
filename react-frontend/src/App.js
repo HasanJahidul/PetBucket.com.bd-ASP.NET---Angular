@@ -20,9 +20,15 @@ import Profile from "./components/customer/Profile";
 //-------------ADMIN--------------------
 
 import AdminDashboard from "./components/admin/AdminDashboard";
-import AddCustomer from "./components/admin/AddCustomer";
+import AddUser from "./components/admin/AddUser";
 import AdminDetails from "./components/admin/AdminDetails";
+import UserList from "./components/admin/UserList";
+import UserDetails from "./components/admin/UserDetails";
+import UserEdit from "./components/admin/UserEdit";
+import AdminProfileEdit from "./components/admin/AdminProfileEdit";
+import UserDelete from "./components/admin/UserDelete";
 
+//-------------END--------------------
 
 function App() {
   return (
@@ -116,8 +122,16 @@ function App() {
           />
         }
       ></Route>
+<<<<<<< HEAD
       
        <Route exact path="/PetService/dog-walking"
+=======
+<<<<<<< HEAD
+=======
+    {/* =========== admin=================*/}
+>>>>>>> 8f61be5e0de565196d3c2ca2d1dbad9e81e44906
+    <Route exact path="/PetService/dog-walking"
+>>>>>>> 01594984adc122dcee5df9da3596b181ee4f3e6b
             children={
               <PetService
                 serviceName="Dog Walking"
@@ -130,20 +144,224 @@ function App() {
    
 
 
-    {/* ADMIN */}
+    {/* ----------------------------------ADMIN---------------------------------- */}
     <Route exact path="/AdminDashboard" >
       <AdminDashboard />
     </Route>
-    <Route exact path="/AddCustomer" >
-      <AddCustomer />
+
+    {/* ADMIN------ADD USER */}
+    <Route exact path="/AddCustomer"
+    children=
+    {
+      <AddUser
+        title="Add Customer"
+        buttonName="Add"
+      />
+    }
+    > 
     </Route>
+    <Route exact path="/AddPetSitter"
+    children=
+    {
+      <AddUser
+        title="Add Pet Sitter"
+        buttonName="Add"
+      />
+    }
+    > 
+    </Route>
+    <Route exact path="/AddAgency"
+    children=
+    {
+      <AddUser
+        title="Add Agency"
+        buttonName="Add"
+      />
+    }
+    > 
+    </Route>
+
+
+    {/* ADMIN------USER LIST */}
+
+    <Route exact path="/CustomerList"
+    children=
+    {
+      <UserList
+        header="Customer List"
+        title="All Customer Details"
+        DetailsLink="/CustomerDetails"
+        EditLink="/CustomerEdit"
+        DeleteLink="/CustomerDelete"
+        
+      />
+    }
+    > 
+    </Route>
+    <Route exact path="/PetSitterList"
+    children=
+    {
+      <UserList
+      header="Pet Sitter List"
+        title="All Pet Sitter Details"
+        DetailsLink="/PetSitterDetails"
+        EditLink="/PetSitterEdit"
+        DeleteLink="/PetSitterDelete"
+      />
+    }
+    > 
+    </Route>
+    <Route exact path="/AgencyList"
+    children=
+    {
+      <UserList
+      header="Agency List"
+        title="All Agency Details"
+        DetailsLink="/AgencyDetails"
+        EditLink="/AgencyEdit"
+        DeleteLink="/AgencyDelete"
+      />
+    }
+    > 
+    </Route>
+
+    {/* ADMIN------USER DETAILS */}
+
+    <Route exact path="/CustomerDetails"
+    children=
+    {
+      <UserDetails
+      header="Customer Details"
+      link="/CustomerList"
+        title="Customer Details"
+      />
+    }
+    > 
+    </Route>
+    <Route exact path="/PetSitterDetails"
+    children=
+    {
+      <UserDetails
+      header="Pet Sitter Details"
+      link="/PetSitterList"
+        title="Pet Sitter Details"
+      />
+    }
+    > 
+    </Route>
+    <Route exact path="/AgencyDetails"
+    children=
+    {
+      <UserDetails
+      header="Agency Details"
+      link="/AgencyList"
+        title="Agency Details"
+      />
+    }
+    > 
+    </Route>
+    
+
+    {/* ADMIN------USER EDIT */}
+
+    <Route exact path="/CustomerEdit"
+    children=
+    {
+      <UserEdit
+      link="/CustomerList"
+        title="Customer Edit"
+        buttonName="Update"
+      />
+    }
+    > 
+    </Route>
+    <Route exact path="/PetSitterEdit"
+    children=
+    {
+      <UserEdit
+      link="/PetSitterList"
+        title="Pet Sitter Edit"
+        buttonName="Update"
+      />
+    }
+    > 
+    </Route>
+    <Route exact path="/AgencyEdit"
+    children=
+    {
+      <UserEdit
+      link="/AgencyList"
+        title="Agency Edit"
+        buttonName="Update"
+      />
+    }
+    > 
+    </Route>
+
+    {/* ADMIN------USER DELETE */}
+
+    <Route exact path="/CustomerDelete"
+    children=
+    {
+      <UserDelete
+      link="/CustomerList"
+        title="Customer Delete"
+        buttonName="Delete"
+      />
+    }
+    > 
+    </Route>
+    <Route exact path="/PetSitterDelete"
+    children=
+    {
+      <UserDelete
+      link="/PetSitterList"
+        title="Pet Sitter Delete"
+        buttonName="Delete"
+      />
+    }
+    > 
+    </Route>
+    <Route exact path="/AgencyDelete"
+    children=
+    {
+      <UserDelete
+      link="/AgencyList"
+        title="Agency Delete"
+        buttonName="Delete"
+      />
+    }
+    > 
+    </Route>
+
+    {/* ADMIN------ADMIN DETAILS */}
+
     <Route exact path="/AdminDetails" >
       <AdminDetails />
     </Route>
     
+    {/* ADMIN------ADMIN Profile Edit */}
+    <Route exact path="/AdminProfileEdit"
+    children=
+    {
+      <AdminProfileEdit
+      // link="/AdminDetails"
+        title="Admin Profile Edit"
+        buttonName="Update"
+      />
+    }
+    > 
+    </Route>
+    
+
+    {/* ----------------------ADMIN-END---------------- */}
+
     </Switch>
 
     </Router> 
+
+
+    {/* ----------------------END---------------- */}
     </>
   );
 }
