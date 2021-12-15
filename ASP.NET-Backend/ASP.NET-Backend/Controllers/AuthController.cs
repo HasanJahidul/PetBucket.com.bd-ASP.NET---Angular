@@ -23,11 +23,11 @@ namespace ASP.NET_Backend.Controllers
         {
             CustomerService.AddCustomer(customer);
 
-            string to = customer.email; //To address    
+            {/*string to = customer.email; //To address    
             string from = "jahidul0hasan@gmail.com"; //From address    
             MailMessage message = new MailMessage(from, to);
 
-            string mailbody = "Welcome"+customer.name+"<br/> Welcome to Pet Bucket";
+            string mailbody = "Welcome" + customer.name + "<br/> Welcome to Pet Bucket";
             message.Subject = "SIGN UP SUCCESSFULL IN PETBUCKET";
             message.Body = mailbody;
             message.BodyEncoding = Encoding.UTF8;
@@ -46,7 +46,7 @@ namespace ASP.NET_Backend.Controllers
             catch (Exception ex)
             {
                 throw ex;
-            }
+            } */}
 
 
         }

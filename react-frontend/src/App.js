@@ -122,23 +122,7 @@ function App() {
           />
         }
       ></Route>
-<<<<<<< HEAD
-      
-       <Route exact path="/PetService/dog-walking"
-=======
-<<<<<<< HEAD
-=======
-    {/* =========== admin=================*/}
->>>>>>> 8f61be5e0de565196d3c2ca2d1dbad9e81e44906
-    <Route exact path="/PetService/dog-walking"
->>>>>>> 01594984adc122dcee5df9da3596b181ee4f3e6b
-            children={
-              <PetService
-                serviceName="Dog Walking"
-                buttonName="Book Service"
-              />
-            }
-          ></Route>
+
 
     {/* =========== admin=================*/}
    
