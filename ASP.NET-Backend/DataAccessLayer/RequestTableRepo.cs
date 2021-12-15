@@ -6,35 +6,41 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class RequestTableRepo : IReqRepo<RequestTable, int>
+    public class RequestTableRepo : IRepository<RequestTable, int>, IAdminRepository<RequestTable, int>
     {
         PetBucketEntities db;
         public RequestTableRepo(PetBucketEntities db)
         {
             this.db = db;
         }
-        public void AddRequest(RequestTable p)
+        public void Add(RequestTable p)
         {
             db.RequestTables.Add(p);
             db.SaveChanges();
-               
         }
 
-        public void EditRequest(RequestTable p)
+        public void Edit(RequestTable p)
         {
             var req = db.RequestTables.FirstOrDefault(x => x.id == p.id);
             db.Entry(req).CurrentValues.SetValues(p);
             db.SaveChanges();
         }
 
-        public List<RequestTable> GetAllRequest()
+        public List<RequestTable> GetAll()
         {
             return db.RequestTables.ToList();
         }
 
-        public RequestTable GetReqByCusId(int id)
+        public RequestTable GetById(int id)
         {
             return db.RequestTables.FirstOrDefault(x => x.customer_id == id);
+        }
+
+        public void Delete(int id)
+        {
+            var req = db.RequestTables.FirstOrDefault(x => x.id == id);
+            db.RequestTables.Remove(req);
+            db.SaveChanges();
         }
     }
 }

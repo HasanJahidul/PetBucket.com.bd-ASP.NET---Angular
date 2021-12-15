@@ -8,11 +8,11 @@ namespace DataAccessLayer
 {
     public interface IRepository<T,ID>
     {
-        List<T> GetAllCustomers();
-        void AddCustomer(T p);
-        void EditCustomer(T p);
-        T GetCustomerById(ID id);
-        void DeleteCustomer(ID id);
+        List<T> GetAll();
+        void Add(T p);
+        void Edit(T p);
+        T GetById(ID id);
+        void Delete(ID id);
 
     }
 }

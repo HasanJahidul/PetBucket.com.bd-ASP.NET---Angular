@@ -44,8 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminService .cs" />
+    <Compile Include="AgencyService.cs" />
     <Compile Include="CustomerService.cs" />
     <Compile Include="PetService.cs" />
+    <Compile Include="PetSitterService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

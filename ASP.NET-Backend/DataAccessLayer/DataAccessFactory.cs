@@ -17,7 +17,22 @@ namespace DataAccessLayer
         {
             return new CustomerRepo(db);
         }
-        public static IReqRepo<RequestTable, int> RequestTableDataAccess()
+
+        public static IAdminRepository<Admin, int> AdminDataAccess()
+        {
+            return new AdminRepo(db);
+        }
+
+        public static IRepository<Agency, int> AgencyDataAccess()
+        {
+            return new AgencyRepo(db);
+        }
+        public static IRepository<Petsitter, int> PetSitterDataAccess()
+        {
+            return new PetSitterRepo(db);
+        }
+
+        public static IRepository<RequestTable, int> RequestTableDataAccess()
         {
             return new RequestTableRepo(db);
         }

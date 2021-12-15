@@ -16,10 +16,10 @@ namespace BusinessEntityLayer
         public string address { get; set; }
         public System.DateTime date { get; set; }
         public string petdetails { get; set; }
-        public string duration { get; set; }
+        public int duration { get; set; }
         public string phone { get; set; }
         public string requestdetails { get; set; }
-        public string amount { get; set; }
+        public decimal amount { get; set; }
     
         //public virtual CustomerModel Customer { get; set; }
     }

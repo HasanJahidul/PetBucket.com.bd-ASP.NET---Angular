@@ -10,43 +10,43 @@ using System.Web.Http.Cors;
 
 namespace ASP.NET_Backend.Controllers
 {
-
     [EnableCors("*", "*", "*")]
     public class CustomerController:ApiController
     {
+        
         [Route("api/CustomerService/AllCustomers")]
         [HttpGet]
         public List<CustomerModel> GetAll()
         {
-            return CustomerService.GetAllCustomers();
+            return CustomerService.GetAll();
         }
         //route for getting a customer by id
         [Route("api/CustomerService/Customer/{id}")]
         [HttpGet]
         public CustomerModel Get(int id)
         {
-            return CustomerService.GetCustomerById(id);
+            return CustomerService.GetById(id);
         }
         //route for adding a customer
         [Route("api/CustomerService/AddCustomer")]
         [HttpPost]
         public void Post([FromBody]CustomerModel customer)
         {
-            CustomerService.AddCustomer(customer);
+            CustomerService.Add(customer);
         }
         //route for editing a customer by id
         [Route("api/CustomerService/EditCustomer")]
         [HttpPut]
         public void Put([FromBody]CustomerModel customer)
         {
-            CustomerService.EditCustomer(customer);
+            CustomerService.Edit(customer);
         }
         //route for deleting a customer by id
         [Route("api/CustomerService/DeleteCustomer/{id}")]
         [HttpDelete]
         public void Delete(int id)
         {
-            CustomerService.DeleteCustomer(id);
+            CustomerService.Delete(id);
         }
     }
 }

@@ -1,8 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
+  const { register,formState: { errors },handleSubmit
+  } = useForm({
+    mode: "onChange" // "onChange"
+    
+  });
+
+const login = (data) =>{
+  //alert(JSON.stringify(data));
+  console.log(data);
+}
+  //console.log(userData);
   return (
+    <>
     <div class=" login-body">
+      
     <div class="wrapper fadeInDown">
         <div id="formContent">
             {/* <!-- Tabs Titles -->
@@ -13,10 +27,33 @@ const Login = () => {
 
             {/* <!-- Login Form --> */}
            
-             
+             <form onSubmit={handleSubmit(login)}>
 
-                <input name="Email" type="text" placeholder="Enter your email" required/>
-                <input name="Password" type="text" placeholder="Enter your password" required/>
+                <input 
+                  name="email" 
+                  type="text" 
+                  placeholder="Enter your email"  
+                  {...register('name', { required: true, maxLength: 20,minLength:6 })}
+                  
+                  />
+                {errors.name && errors.name.type === "required" && (
+                  <span className='erralert' ><br/>This is required <br/></span>
+                )}
+                {errors.name && errors.name.type === "maxLength" && (
+                  <span className='erralert'><br/>Max length exceeded <br/></span>
+                )}
+                {errors.name && errors.name.type === "minLength" && (
+                  <span className='erralert'><br/>Minimun length is 6 <br/></span>
+                )}
+                 <input 
+                 name="password" 
+                 type="text" 
+                 placeholder="Enter your password"
+                 {...register('password', { required: true})}
+                 /> 
+                 {errors.name && errors.name.type === "required" && (
+                  <span className='erralert' ><br/>This is required <br/></span>
+                )}
                 
                 <br />
 
@@ -27,7 +64,7 @@ const Login = () => {
                 </div>
             
 
-
+              </form>
 
             {/* <!-- Remind Passowrd --> */}
             <div id="formFooter">
@@ -39,6 +76,7 @@ const Login = () => {
     </div>
 
 </div>
+</>
   )
 }
 

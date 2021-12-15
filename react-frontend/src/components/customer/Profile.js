@@ -35,7 +35,7 @@ import {ToastContainer,toast,Zoom} from 'react-toastify';
             }
         );
     }, [userID]);
-
+    console.log(userData);
     const handleInputChange = (e) => {
       const name = e.target.name;
       const value = e.target.value;

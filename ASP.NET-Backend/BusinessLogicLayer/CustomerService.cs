@@ -12,43 +12,43 @@ namespace BusinessLogicLayer
     public class CustomerService
     {
         
-        public static List<CustomerModel> GetAllCustomers()
+        public static List<CustomerModel> GetAll()
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Customer, CustomerModel>());
             var mapper = config.CreateMapper();
-            var customers = DataAccessFactory.CustomerDataAccess().GetAllCustomers();
+            var customers = DataAccessFactory.CustomerDataAccess().GetAll();
             var result = mapper.Map<List<Customer>, List<CustomerModel>>(customers);
             return result;
         }
-        public static CustomerModel GetCustomerById(int id)
+        public static CustomerModel GetById(int id)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Customer, CustomerModel>());
             var mapper = config.CreateMapper();
-            var customer = DataAccessFactory.CustomerDataAccess().GetCustomerById(id);
+            var customer = DataAccessFactory.CustomerDataAccess().GetById(id);
             var result = mapper.Map<Customer, CustomerModel>(customer);
             return result;
         }
-       public static void AddCustomer(CustomerModel customer)
+       public static void Add(CustomerModel customer)
         {
             var config= new MapperConfiguration(c=>c.CreateMap<CustomerModel, Customer>());
             var mapper =new Mapper(config);
             var result = mapper.Map<CustomerModel,Customer>(customer);
-            DataAccessFactory.CustomerDataAccess().AddCustomer(result);
+            DataAccessFactory.CustomerDataAccess().Add(result);
                 
            
         }
-        public static void EditCustomer(CustomerModel customer)
+        public static void Edit(CustomerModel customer)
         {
             var config = new MapperConfiguration(c => c.CreateMap<CustomerModel, Customer>());
             var mapper = new Mapper(config);
             var result = mapper.Map<CustomerModel, Customer>(customer);
-            DataAccessFactory.CustomerDataAccess().EditCustomer(result);
+            DataAccessFactory.CustomerDataAccess().Edit(result);
         }
-        public static void DeleteCustomer(int id)
+        public static void Delete(int id)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Customer, CustomerModel>());
             var mapper = config.CreateMapper();
-            var customer = DataAccessFactory.CustomerDataAccess().GetCustomerById(id);
+            var customer = DataAccessFactory.CustomerDataAccess().GetById(id);
             var result = mapper.Map<Customer, CustomerModel>(customer);
            
         }

@@ -15,7 +15,7 @@ namespace BusinessLogicLayer
         {
             var config = new MapperConfiguration(cfg =>cfg.CreateMap<RequestTable, RequestTableModel>());
             var mapper = config.CreateMapper();
-            var requestList = DataAccessFactory.RequestTableDataAccess().GetAllRequest();
+            var requestList = DataAccessFactory.RequestTableDataAccess().GetAll();
             var result = mapper.Map<List<RequestTable>, List<RequestTableModel>>(requestList);
             return result;
         }
@@ -29,14 +29,14 @@ namespace BusinessLogicLayer
             });
             var mapper = config.CreateMapper();
             var result = mapper.Map<RequestTableModel, RequestTable>(pet);
-            DataAccessFactory.RequestTableDataAccess().AddRequest(result);
+            DataAccessFactory.RequestTableDataAccess().Add(result);
         }
         //get request by id
-        public static RequestTableModel GetRequestById(int id)
+        public static RequestTableModel GetRequestByCusId(int id)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<RequestTable, RequestTableModel>());
             var mapper = config.CreateMapper();
-            var request = DataAccessFactory.RequestTableDataAccess().GetReqByCusId(id);
+            var request = DataAccessFactory.RequestTableDataAccess().GetById(id);
             var result = mapper.Map<RequestTable, RequestTableModel>(request);
             return result;
         }

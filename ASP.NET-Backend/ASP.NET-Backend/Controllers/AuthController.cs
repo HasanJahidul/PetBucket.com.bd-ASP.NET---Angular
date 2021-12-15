@@ -21,7 +21,7 @@ namespace ASP.NET_Backend.Controllers
         [HttpPost]
         public void post([FromBody] CustomerModel customer)
         {
-            CustomerService.AddCustomer(customer);
+            CustomerService.Add(customer);
 
             {/*string to = customer.email; //To address    
             string from = "jahidul0hasan@gmail.com"; //From address    

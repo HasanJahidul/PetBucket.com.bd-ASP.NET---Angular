@@ -5,6 +5,32 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="PetBucketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="password" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="address" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="nid" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="profit" Type="money" />
+          <Property Name="phone" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Agencies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="password" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="address" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="nid" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="balance" Type="money" Nullable="false" />
+          <Property Name="phone" Type="nchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="Customers">
           <Key>
             <PropertyRef Name="id" />
@@ -26,6 +52,27 @@
           <Property Name="Email" Type="nchar" MaxLength="100" />
           <Property Name="Password" Type="nchar" MaxLength="100" />
           <Property Name="type" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PetBucket.dbo.Petsitters' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Petsitters">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="password" />
+            <PropertyRef Name="address" />
+            <PropertyRef Name="nid" />
+            <PropertyRef Name="balance" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="password" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="address" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="nid" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="balance" Type="money" Nullable="false" />
+          <Property Name="phone" Type="nchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="RequestTables">
           <Key>
@@ -55,9 +102,23 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="PetBucketModelStoreContainer">
+          <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Agencies" EntityType="Self.Agencies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Logins" EntityType="Self.Logins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RequestTables" EntityType="Self.RequestTables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Petsitters" EntityType="Self.Petsitters" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Petsitters].[id] AS [id], 
+[Petsitters].[name] AS [name], 
+[Petsitters].[email] AS [email], 
+[Petsitters].[password] AS [password], 
+[Petsitters].[address] AS [address], 
+[Petsitters].[nid] AS [nid], 
+[Petsitters].[balance] AS [balance], 
+[Petsitters].[phone] AS [phone]
+FROM [dbo].[Petsitters] AS [Petsitters]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_RequestTables_Customers" Association="Self.FK_RequestTables_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="RequestTables" EntitySet="RequestTables" />
@@ -68,6 +129,32 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PetBucketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="nid" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="profit" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="phone" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Agency">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="nid" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="balance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="id" />
@@ -107,6 +194,25 @@
           <Property Name="amount" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_RequestTables_Customers" FromRole="RequestTables" ToRole="Customers" />
         </EntityType>
+        <EntityType Name="Petsitter">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="password" />
+            <PropertyRef Name="address" />
+            <PropertyRef Name="nid" />
+            <PropertyRef Name="balance" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="nid" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="balance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
         <Association Name="FK_RequestTables_Customers">
           <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="RequestTables" Type="Self.RequestTable" Multiplicity="*" />
@@ -120,9 +226,12 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="PetBucketEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Agencies" EntityType="Self.Agency" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Logins" EntityType="Self.Login" />
           <EntitySet Name="RequestTables" EntityType="Self.RequestTable" />
+          <EntitySet Name="Petsitters" EntityType="Self.Petsitter" />
           <AssociationSet Name="FK_RequestTables_Customers" Association="Self.FK_RequestTables_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="RequestTables" EntitySet="RequestTables" />
@@ -134,6 +243,34 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="PetBucketModelStoreContainer" CdmEntityContainer="PetBucketEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="PetBucketModel.Admin">
+              <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="nid" ColumnName="nid" />
+                <ScalarProperty Name="profit" ColumnName="profit" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agencies">
+            <EntityTypeMapping TypeName="PetBucketModel.Agency">
+              <MappingFragment StoreEntitySet="Agencies">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="nid" ColumnName="nid" />
+                <ScalarProperty Name="balance" ColumnName="balance" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="PetBucketModel.Customer">
               <MappingFragment StoreEntitySet="Customers">
@@ -171,6 +308,20 @@
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="requestdetails" ColumnName="requestdetails" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Petsitters">
+            <EntityTypeMapping TypeName="PetBucketModel.Petsitter">
+              <MappingFragment StoreEntitySet="Petsitters">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="nid" ColumnName="nid" />
+                <ScalarProperty Name="balance" ColumnName="balance" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -21,7 +21,7 @@ const PetService = (props) => {
         const name = e.target.name;
         const value = e.target.value;
         setPetService({  ...petService,[name]: [value]})
-        console.log(name, value);
+        // console.log(name, value);
         
     }
     
@@ -62,7 +62,21 @@ const PetService = (props) => {
             petdetails: '',
             requestdetails: '', })
             setAmount(0);
-        }else{
+        } if(res.status === 204){
+            toast.success(props.serviceName+" Booked Successfully");
+            
+            
+            setPetService({ 
+            name: '',
+            phone: '',
+            address: '',
+            date: '',
+            duration: '',
+            petdetails: '',
+            requestdetails: '', })
+            setAmount(0);
+        }
+        else{
             toast.error("An error occured to book "+props.serviceName+ " service");
         }
 

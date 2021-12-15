@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminModel.cs" />
+    <Compile Include="AgencyModel.cs" />
     <Compile Include="CustomerModel.cs" />
+    <Compile Include="PetSitterModel.cs" />
     <Compile Include="RequestTableModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

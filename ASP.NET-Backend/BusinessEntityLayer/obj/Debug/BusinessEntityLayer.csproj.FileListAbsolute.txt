@@ -10,3 +10,9 @@ D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\BusinessEnt
 D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\BusinessEntityLayer\obj\Debug\BusinessEntityLayer.csproj.CoreCompileInputs.cache
 D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\BusinessEntityLayer\obj\Debug\BusinessEntityLayer.dll
 D:\AIUB\.NET\Project\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\BusinessEntityLayer\obj\Debug\BusinessEntityLayer.pdb
+C:\Users\User\Downloads\AIUB\Fall [21-22]\ASP.NET\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\BusinessEntityLayer\bin\Debug\BusinessEntityLayer.dll
+C:\Users\User\Downloads\AIUB\Fall [21-22]\ASP.NET\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\BusinessEntityLayer\bin\Debug\BusinessEntityLayer.pdb
+C:\Users\User\Downloads\AIUB\Fall [21-22]\ASP.NET\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\BusinessEntityLayer\obj\Debug\BusinessEntityLayer.csproj.AssemblyReference.cache
+C:\Users\User\Downloads\AIUB\Fall [21-22]\ASP.NET\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\BusinessEntityLayer\obj\Debug\BusinessEntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\User\Downloads\AIUB\Fall [21-22]\ASP.NET\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\BusinessEntityLayer\obj\Debug\BusinessEntityLayer.dll
+C:\Users\User\Downloads\AIUB\Fall [21-22]\ASP.NET\PetBucket.com.bd-ASP.NET--React\ASP.NET-Backend\BusinessEntityLayer\obj\Debug\BusinessEntityLayer.pdb

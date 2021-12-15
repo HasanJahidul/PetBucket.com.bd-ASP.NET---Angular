@@ -13,7 +13,7 @@ const Dashboard = () => {
             }
         );
     }, []);
-            
+    // console.log(reqList);
     return (
         <>
         <CustomerSidebar/>  
@@ -208,7 +208,35 @@ const Dashboard = () => {
                     </tr>
                 </thead>
                 <tbody>
-                {reqList.filter((val) => {
+                
+                {reqList.map((item, index) => {
+                        if(item.name.toLowerCase().includes(search.toLowerCase())||
+                        item.phone.includes(search.toLowerCase())||
+                        item.date.toString().includes(search.toLowerCase())||
+                        item.duration.toString().includes(search.toLowerCase())||
+                        item.amount.toString().includes(search.toLowerCase())||
+                        item.petdetails.toLowerCase().includes(search.toLowerCase())||
+                        item.requestdetails.toLowerCase().includes(search.toLowerCase())){
+                            return(
+                                <tr key={index}>
+                                    <td>{index+1}</td>
+                                    <td>{item.name}</td>
+                                    <td>{item.date}</td>
+                                    <td>{item.duration}</td>
+                                    <td>{item.amount}</td>
+                                    <td>{item.phone}</td>
+                                    <td>{item.petdetails}</td>
+                                    <td>{item.requestdetails}</td>
+                                    {/* <td>
+                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>  */}
+                                </tr>
+                            )
+                        }
+                    })}
+               {/*  {reqList.filter((val) => {
                                                 if (search === "") {
                                                     return val
                                                 }
@@ -252,18 +280,18 @@ const Dashboard = () => {
                         <td>{u.phone}</td>
                         <td>{u.petdetails}</td>
                         <td>{u.requestdetails}</td>
-                        {/* <td>
+                        <td>
                             <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
                             <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                             <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td> */}
+                        </td> 
                 
-                </tr>
+                     </tr>
                    
                       );
                      
                     })
-                }
+                }*/}
        
                 </tbody>
             </table>
