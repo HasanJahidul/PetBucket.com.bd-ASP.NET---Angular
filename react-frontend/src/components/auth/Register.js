@@ -6,28 +6,10 @@ import { useForm } from "react-hook-form";
   const Register = (props) => {
     //Validation
     const { register, formState: { errors }, getValues, handleSubmit } = useForm();
-
-
-
-    //Initial State of values
+    //State
     const history = useHistory();
-  //   const [userData, setUserData] = useState({
-  //     name: '',
-  //     email: '',
-  //     password: '',
-  //     address: '',
-  //     nid: '',
-  //     phone: ''
-      
-  // });
-    // setting the state of the form
-  //   const handleInputChange = (e) => {
-  //     const name = e.target.name;
-  //     const value = e.target.value;
-  //     setUserData({  ...userData,[name]: [value]})
-  //     console.log(name, value);
-      
-  // }
+    //function to register user
+
   const registeration = async (data) => {
     console.log(data.name);
     //send the request to the server to book the service.
@@ -44,32 +26,15 @@ import { useForm } from "react-hook-form";
       password: password});
     if(res.status === 200){
         toast.success("Registration Successful");
-        
-        
-        // setUserData({ 
-        //   name: '',
-        //   email: '',
-        //   password: '',
-        //   address: '',
-        //   nid: '',
-        //   phone: '' })
+        setTimeout(() => { history.push('/login'); }, 3000);
     }if(res.status === 204){
       toast.success("Registration Successful");
-      
-      
-      // setUserData({ 
-      //   name: '',
-      //   email: '',
-      //   password: '',
-      //   address: '',
-      //   nid: '',
-      //   phone: '' })
-        setTimeout(() => { history.push('/login'); }, 2000);
+        setTimeout(() => { history.push('/login'); }, 3000);
   }
     else{
         toast.error("An error occured to while registering");
     }
-
+     
     }
 
     return (
@@ -116,7 +81,7 @@ import { useForm } from "react-hook-form";
                     <div class="input-box">
                         <span class="details">Phone Number</span>
                         <input name="phone" type="text" placeholder="Enter your number"
-                        {...register('phone', { required: true, maxLength: 11,minLength:11 })}
+                        {...register('phone', { required: true, maxLength: 11,minLength:11,pattern: /^(?:0\.(?:0[0-9]|[0-9]\d?)|[0-9]\d*(?:\.\d{1,2})?)(?:e[+-]?\d+)?$/ })}
                         />
                         {errors.phone && errors.phone.type === "required" && (
                           <span className='erralert'><br/>Phone number is required <br/></span>
@@ -127,25 +92,25 @@ import { useForm } from "react-hook-form";
                         {errors.phone && errors.phone.type === "minLength" && (
                           <span className='erralert'><br/>Minimun length is 11 <br/></span>
                         )}
+                        {errors.phone && errors.phone.type === "pattern" && (
+                          <span className='erralert'><br/>Invalid phone number <br/></span>
+                        )}
                     </div>
 
                     <div class="input-box">
                         <span class="details">NID Number</span>
                         <input name="nid" type="text" placeholder="Enter your NID number"
                         // validate input only number
-                        {...register('nid', { required: true, maxLength: 17,minLength:10,pattern: /^(?:0\.(?:0[0-9]|[0-9]\d?)|[0-9]\d*(?:\.\d{1,2})?)(?:e[+-]?\d+)?$/ })}
+                        {...register('address', { required: true, maxLength: 50,minLength:10 })}
                         />
-                        {errors.nid && errors.nid.type === "required" && (
-                          <span className='erralert'><br/>NID number is required <br/></span>
+                        {errors.address && errors.address.type === "required" && (
+                          <span className='erralert'><br/>Address is required <br/></span>
                         )}
-                        {errors.nid && errors.nid.type === "maxLength" && (
-                          <span className='erralert'><br/>Max length exceeded <br/></span>
+                        {errors.address && errors.address.type === "maxLength" && (
+                          <span className='erralert'><br/>Max length is 50 <br/></span>
                         )}
-                        {errors.nid && errors.nid.type === "minLength" && (
-                          <span className='erralert'><br/>Minimun length is 10<br/></span>
-                        )}
-                        {errors.nid && errors.nid.type === "pattern" && (
-                          <span className='erralert'><br/>Input only number <br/></span>
+                        {errors.address && errors.address.type === "minLength" && (
+                          <span className='erralert'><br/>Minimun length is 10 <br/></span>
                         )}
 
                     </div>
