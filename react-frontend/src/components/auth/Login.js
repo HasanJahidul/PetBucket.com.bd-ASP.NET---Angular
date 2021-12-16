@@ -33,18 +33,13 @@ const login = (data) =>{
                   name="email" 
                   type="text" 
                   placeholder="Enter your email"  
-                  {...register('name', { required: true, maxLength: 20,minLength:6 })}
+                  {...register('name', { required: true})}
                   
                   />
                 {errors.name && errors.name.type === "required" && (
                   <span className='erralert' ><br/>This is required <br/></span>
                 )}
-                {errors.name && errors.name.type === "maxLength" && (
-                  <span className='erralert'><br/>Max length exceeded <br/></span>
-                )}
-                {errors.name && errors.name.type === "minLength" && (
-                  <span className='erralert'><br/>Minimun length is 6 <br/></span>
-                )}
+                
                  <input 
                  name="password" 
                  type="text" 

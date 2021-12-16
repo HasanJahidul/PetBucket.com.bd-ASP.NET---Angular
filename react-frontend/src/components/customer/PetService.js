@@ -8,27 +8,16 @@ import { useForm } from "react-hook-form";
 const PetService = (props) => {
 
     //validate form
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit,reset } = useForm();
     
 
-    const [petService, setPetService] = useState({
-        name: '',
-        phone: '',
-        address: '',
-        date: '',
-        duration: '',
-        petdetails: '',
-        requestdetails: '',
-        
-    });
-    // const [duration, setDuration] = useState(0);
    // setting the state of the form
     const getDurationtOnInputChange  = (e) => {
         setAmount(parseInt(e.target.value)*20);
         // console.log(name, value);
         
     }
-    // const handleChange = () => setAmount(parseInt(duration)*20);
+ 
 
     
     
@@ -57,30 +46,13 @@ const PetService = (props) => {
              requestdetails: requestdetails, amount: amount});
         if(res.status === 200){
             toast.success(props.serviceName+" Booked Successfully");
-            
-            
-            // setPetService({ 
-            // name: '',
-            // phone: '',
-            // address: '',
-            // date: '',
-            // duration: '',
-            // petdetails: '',
-            // requestdetails: '', })
+        
             setAmount(0);
+            reset();
         } if(res.status === 204){
             toast.success(props.serviceName+" Booked Successfully");
-            
-            
-            // setPetService({ 
-            // name: '',
-            // phone: '',
-            // address: '',
-            // date: '',
-            // duration: '',
-            // petdetails: '',
-            // requestdetails: '', })
             setAmount(0);
+            reset();
         }
         else{
             toast.error("An error occured to book "+props.serviceName+ " service");

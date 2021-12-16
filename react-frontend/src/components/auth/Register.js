@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import {ToastContainer,toast,Zoom} from 'react-toastify';
 import { useForm } from "react-hook-form";
   const Register = (props) => {
     //Validation
-    const { register, formState: { errors }, getValues, handleSubmit } = useForm();
+    //const { register, formState: { errors }, getValues, handleSubmit} = useForm();
+    const { register, formState: { errors }, handleSubmit,reset,getValues, } = useForm();
+    
     //State
     const history = useHistory();
     //function to register user
@@ -25,11 +27,17 @@ import { useForm } from "react-hook-form";
       email: email,nid: nid, 
       password: password});
     if(res.status === 200){
+      reset();
         toast.success("Registration Successful");
-        setTimeout(() => { history.push('/login'); }, 3000);
+        
+        //setTimeout(() => { history.push('/login'); }, 3000);
+
     }if(res.status === 204){
+      reset();
       toast.success("Registration Successful");
-        setTimeout(() => { history.push('/login'); }, 3000);
+      
+        //setTimeout(() => { history.push('/login'); }, 3000);
+        
   }
     else{
         toast.error("An error occured to while registering");
@@ -101,10 +109,10 @@ import { useForm } from "react-hook-form";
                         <span class="details">NID Number</span>
                         <input name="nid" type="text" placeholder="Enter your NID number"
                         // validate input only number
-                        {...register('address', { required: true, maxLength: 50,minLength:10 })}
+                        {...register('nid', { required: true, maxLength: 50,minLength:10 })}
                         />
                         {errors.address && errors.address.type === "required" && (
-                          <span className='erralert'><br/>Address is required <br/></span>
+                          <span className='erralert'><br/>NID is required <br/></span>
                         )}
                         {errors.address && errors.address.type === "maxLength" && (
                           <span className='erralert'><br/>Max length is 50 <br/></span>

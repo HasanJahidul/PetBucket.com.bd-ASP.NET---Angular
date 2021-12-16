@@ -11,6 +11,7 @@ using BusinessEntityLayer;
 using System.IO;
 using System.Net.Mail;
 using System.Text;
+using System.Web.UI.WebControls;
 
 namespace ASP.NET_Backend.Controllers
 {
@@ -22,8 +23,8 @@ namespace ASP.NET_Backend.Controllers
         public void post([FromBody] CustomerModel customer)
         {
             CustomerService.Add(customer);
-
-            {/*string to = customer.email; //To address    
+            LoginService.Add(new LoginModel { Email = customer.email, Password = customer.password, Name = customer.name, type = "Customer" });
+            {/* string to = customer.email; //To address    
             string from = "jahidul0hasan@gmail.com"; //From address    
             MailMessage message = new MailMessage(from, to);
 
@@ -46,7 +47,8 @@ namespace ASP.NET_Backend.Controllers
             catch (Exception ex)
             {
                 throw ex;
-            } */}
+            } */
+            }
 
 
         }

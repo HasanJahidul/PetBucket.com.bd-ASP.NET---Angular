@@ -11,7 +11,7 @@ namespace DataAccessLayer
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class RequestTable
     {
         public int id { get; set; }
