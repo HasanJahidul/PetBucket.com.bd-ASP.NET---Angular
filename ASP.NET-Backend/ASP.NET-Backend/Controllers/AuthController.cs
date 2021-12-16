@@ -20,37 +20,74 @@ namespace ASP.NET_Backend.Controllers
     {
         [Route("api/Register")]
         [HttpPost]
-        public void post([FromBody] CustomerModel customer)
+        public HttpResponseMessage Post([FromBody] CustomerModel customer)
         {
-            CustomerService.Add(customer);
-            LoginService.Add(new LoginModel { Email = customer.email, Password = customer.password, Name = customer.name, type = "Customer" });
-            {/* string to = customer.email; //To address    
-            string from = "jahidul0hasan@gmail.com"; //From address    
-            MailMessage message = new MailMessage(from, to);
-
-            string mailbody = "Welcome" + customer.name + "<br/> Welcome to Pet Bucket";
-            message.Subject = "SIGN UP SUCCESSFULL IN PETBUCKET";
-            message.Body = mailbody;
-            message.BodyEncoding = Encoding.UTF8;
-            message.IsBodyHtml = true;
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Gmail smtp    
-            System.Net.NetworkCredential basicCredential1 = new
-            System.Net.NetworkCredential("jahidul0hasan@gmail.com", "OfficialPassword");
-            client.EnableSsl = true;
-            client.UseDefaultCredentials = false;
-            client.Credentials = basicCredential1;
-            try
+            if (LoginService.GetByEmail(customer.email)!=null)
             {
-                client.Send(message);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Email is Already Resitered");
             }
-
-            catch (Exception ex)
+            else
             {
-                throw ex;
-            } */
+                CustomerService.Add(customer);
+                LoginService.Add(new LoginModel { email = customer.email, password = customer.password, type = "Customer" });
+                {/* string to = customer.email; //To address    
+                string from = "jahidul0hasan@gmail.com"; //From address    
+                MailMessage message = new MailMessage(from, to);
+
+                string mailbody = "Welcome" + customer.name + "<br/> Welcome to Pet Bucket";
+                message.Subject = "SIGN UP SUCCESSFULL IN PETBUCKET";
+                message.Body = mailbody;
+                message.BodyEncoding = Encoding.UTF8;
+                message.IsBodyHtml = true;
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Gmail smtp    
+                System.Net.NetworkCredential basicCredential1 = new
+                System.Net.NetworkCredential("jahidul0hasan@gmail.com", "OfficialPassword");
+                client.EnableSsl = true;
+                client.UseDefaultCredentials = false;
+                client.Credentials = basicCredential1;
+                try
+                {
+                    client.Send(message);
+                }
+
+                catch (Exception ex)
+                {
+                    throw ex;
+                } */
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, "Registered");
+
             }
+            
+        }
+        [Route("api/logout")]
+        [HttpGet]
+        public HttpResponseMessage Logout()
+        {
+            var token = Request.Headers.Authorization.ToString();
+            if (token != null)
+            {
+                var rs = AuthService.Logout(token);
+                if (rs)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Sucess fully logged out");
+                }
 
+            }
+            return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid token to logout");
+        }
+        [Route("api/login")]
+        [HttpPost]
+        public HttpResponseMessage Login(LoginModel login)
+        {
+            //call to service
+            var token = AuthService.Authenticate(login);
+            if (token != null)
+            {
 
+                return Request.CreateResponse(HttpStatusCode.OK, token);
+            }
+            return Request.CreateResponse(HttpStatusCode.NotFound, "User not found");
         }
     }
 }

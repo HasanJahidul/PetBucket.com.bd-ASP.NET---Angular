@@ -7,13 +7,14 @@ import { useForm } from "react-hook-form";
     //Validation
     //const { register, formState: { errors }, getValues, handleSubmit} = useForm();
     const { register, formState: { errors }, handleSubmit,reset,getValues, } = useForm();
+    const [response, setResponse] = React.useState(null);
     
     //State
     const history = useHistory();
     //function to register user
 
   const registeration = async (data) => {
-    console.log(data.name);
+   
     //send the request to the server to book the service.
     const name = data.name.toString();
     const phone = data.phone.toString();
@@ -25,23 +26,32 @@ import { useForm } from "react-hook-form";
     const res = await axios.post('https://localhost:44398/api/Register',
     {name:name, phone: phone, address: address,
       email: email,nid: nid, 
-      password: password});
-    if(res.status === 200){
-      reset();
-        toast.success("Registration Successful");
+      password: password}).then(
+        (response) => {
+          console.log(response);
+          setResponse(response);
+        }    
+      );
+      //setResponse(res);
+      console.log(response);
+    // if(res.status === 200){
+    //   reset();
+    //     toast.success("Registration Successful");
         
-        //setTimeout(() => { history.push('/login'); }, 3000);
+    //     //setTimeout(() => { history.push('/login'); }, 3000);
 
-    }if(res.status === 204){
-      reset();
-      toast.success("Registration Successful");
+    // }if(res.status === 204){
+    //   reset();
+    //   toast.success("Registration Successful");
       
-        //setTimeout(() => { history.push('/login'); }, 3000);
+    //     //setTimeout(() => { history.push('/login'); }, 3000);
         
-  }
-    else{
-        toast.error("An error occured to while registering");
-    }
+    // }if(res.status === 400){
+    //   toast.error("Email is already registered");    
+    // }
+    // else{
+    //     toast.error("An error occured to while registering");
+    // }
      
     }
 
@@ -49,10 +59,15 @@ import { useForm } from "react-hook-form";
       <>
       <ToastContainer position="top-right" theme='dark' transition={Zoom} />
         <div class="reg-body">
+          
         <div class="reg-container">
+        <div class="fadeIn first centerdiv">
+                <img src="https://cdn.discordapp.com/attachments/800404133731369023/904061372730585128/petbucket.png" id="icon" alt="User Icon" style={{paddingLeft:"10px"}} />
+            </div>
         <div class="title">REGISTER</div>
         <p></p>
         <div class="content">
+          
             <form onSubmit={handleSubmit(registeration)}>
                 <div class="user-details">
                     <div class="input-box">
@@ -108,7 +123,7 @@ import { useForm } from "react-hook-form";
                     <div class="input-box">
                         <span class="details">NID Number</span>
                         <input name="nid" type="text" placeholder="Enter your NID number"
-                        // validate input only number
+                       
                         {...register('nid', { required: true, maxLength: 50,minLength:10 })}
                         />
                         {errors.address && errors.address.type === "required" && (

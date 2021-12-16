@@ -48,6 +48,7 @@
     <Compile Include="PetSitterModel.cs" />
     <Compile Include="RequestTableModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TokenModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

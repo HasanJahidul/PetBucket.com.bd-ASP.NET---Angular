@@ -36,7 +36,15 @@ namespace DataAccessLayer
         {
             return new RequestTableRepo(db);
         }
-        public static ILogRepository<Login> LoginDataAccess()
+        public static ILogRepository<Login,string> LoginDataAccess()
+        {
+            return new LoginRepo(db);
+        }
+        public static IRepository<Token, string> TokenDataAccess()
+        {
+            return new TokenRepo(db);
+        }
+        public static IAuth AuthDataAccess()
         {
             return new LoginRepo(db);
         }

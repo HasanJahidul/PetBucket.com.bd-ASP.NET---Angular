@@ -14,10 +14,16 @@ namespace DataAccessLayer
     
     public partial class Login
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public Login()
+        {
+            this.Tokens = new HashSet<Token>();
+        }
+    
+        public int id { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
         public string type { get; set; }
+    
+        public virtual ICollection<Token> Tokens { get; set; }
     }
 }

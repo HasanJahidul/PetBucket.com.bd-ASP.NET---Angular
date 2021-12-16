@@ -12,19 +12,14 @@ namespace DataAccessLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class RequestTable
+    public partial class Token
     {
         public int id { get; set; }
-        public Nullable<int> customer_id { get; set; }
-        public string name { get; set; }
-        public string address { get; set; }
-        public Nullable<System.DateTime> date { get; set; }
-        public string petdetails { get; set; }
-        public string duration { get; set; }
-        public string phone { get; set; }
-        public string requestdetails { get; set; }
-        public string amount { get; set; }
+        public int login_id { get; set; }
+        public string AccessToken { get; set; }
+        public System.DateTime CreatedAt { get; set; }
+        public Nullable<System.DateTime> ExpiredAt { get; set; }
     
-        public virtual Customer Customer { get; set; }
+        public virtual Login Login { get; set; }
     }
 }

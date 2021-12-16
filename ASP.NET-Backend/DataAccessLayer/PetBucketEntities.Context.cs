@@ -30,6 +30,7 @@ namespace DataAccessLayer
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Login> Logins { get; set; }
         public DbSet<RequestTable> RequestTables { get; set; }
+        public DbSet<Token> Tokens { get; set; }
         public DbSet<Petsitter> Petsitters { get; set; }
     }
 }

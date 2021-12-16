@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public interface ILogRepository<T,Email>
+    public interface IAuth
     {
-        void AddToLogin(T p);
-        T GetByEmail(Email email);
+        Token Authenticate(Login login);
+        bool IsAuthenticated(string token);
+        bool Logout(string token);
     }
 }

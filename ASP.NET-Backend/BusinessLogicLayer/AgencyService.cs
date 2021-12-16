@@ -46,10 +46,7 @@ namespace BusinessLogicLayer
         public static void Delete(int id)
         {
             
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Customer, CustomerModel>());
-            var mapper = config.CreateMapper();
-            var agency = DataAccessFactory.AgencyDataAccess().GetById(id);
-            var result = mapper.Map<Agency, AgencyModel>(agency);
+            DataAccessFactory.AgencyDataAccess().Delete(id);
 
         }
     }

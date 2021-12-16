@@ -40,13 +40,12 @@
   </EntityType>
   <EntityType Name="Logins">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nchar" MaxLength="100" />
-    <Property Name="Email" Type="nchar" MaxLength="100" />
-    <Property Name="Password" Type="nchar" MaxLength="100" />
-    <Property Name="type" Type="nchar" MaxLength="10" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="type" Type="nchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'PetBucket.dbo.Petsitters' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -84,6 +83,16 @@ warning 6002: The table/view 'PetBucket.dbo.Petsitters' does not have a primary 
     <Property Name="requestdetails" Type="nchar" MaxLength="1000" />
     <Property Name="amount" Type="nchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="Tokens">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login_id" Type="int" Nullable="false" />
+    <Property Name="AccessToken" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="ExpiredAt" Type="datetime" />
+  </EntityType>
   <Association Name="FK_RequestTables_Customers">
     <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
     <End Role="RequestTables" Type="Self.RequestTables" Multiplicity="*" />
@@ -96,12 +105,25 @@ warning 6002: The table/view 'PetBucket.dbo.Petsitters' does not have a primary 
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Tokens_Logins1">
+    <End Role="Logins" Type="Self.Logins" Multiplicity="1" />
+    <End Role="Tokens" Type="Self.Tokens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Logins">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Tokens">
+        <PropertyRef Name="login_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="PetBucketModelStoreContainer">
     <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Agencies" EntityType="Self.Agencies" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Logins" EntityType="Self.Logins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RequestTables" EntityType="Self.RequestTables" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tokens" EntityType="Self.Tokens" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Petsitters" EntityType="Self.Petsitters" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [Petsitters].[id] AS [id], 
@@ -117,6 +139,10 @@ FROM [dbo].[Petsitters] AS [Petsitters]</DefiningQuery>
     <AssociationSet Name="FK_RequestTables_Customers" Association="Self.FK_RequestTables_Customers">
       <End Role="Customers" EntitySet="Customers" />
       <End Role="RequestTables" EntitySet="RequestTables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tokens_Logins1" Association="Self.FK_Tokens_Logins1">
+      <End Role="Logins" EntitySet="Logins" />
+      <End Role="Tokens" EntitySet="Tokens" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

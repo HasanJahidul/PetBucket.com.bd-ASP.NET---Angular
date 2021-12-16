@@ -45,10 +45,9 @@
     <EntitySetMapping Name="Logins">
       <EntityTypeMapping TypeName="PetBucketModel.Login">
         <MappingFragment StoreEntitySet="Logins">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="type" ColumnName="type" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -66,6 +65,17 @@
           <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="requestdetails" ColumnName="requestdetails" />
           <ScalarProperty Name="amount" ColumnName="amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tokens">
+      <EntityTypeMapping TypeName="PetBucketModel.Token">
+        <MappingFragment StoreEntitySet="Tokens">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login_id" ColumnName="login_id" />
+          <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="ExpiredAt" ColumnName="ExpiredAt" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

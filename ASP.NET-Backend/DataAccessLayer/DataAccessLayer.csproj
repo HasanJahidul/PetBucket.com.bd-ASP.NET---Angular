@@ -62,6 +62,7 @@
     <Compile Include="CustomerRepo.cs" />
     <Compile Include="DataAccessFactory.cs" />
     <Compile Include="IAdminRepository.cs" />
+    <Compile Include="IAuth.cs" />
     <Compile Include="ILogRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Login.cs">
@@ -92,6 +93,10 @@
       <DependentUpon>PetBucketEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="RequestTableRepo.cs" />
+    <Compile Include="Token.cs">
+      <DependentUpon>PetBucketEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TokenRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

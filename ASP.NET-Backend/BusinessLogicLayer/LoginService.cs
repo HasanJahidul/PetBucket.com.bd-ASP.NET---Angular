@@ -19,5 +19,13 @@ namespace BusinessLogicLayer
             DataAccessFactory.LoginDataAccess().AddToLogin(result);
 
         }
+        public static LoginModel GetByEmail(string email)
+        {
+            var config = new MapperConfiguration(c => c.CreateMap<Login, LoginModel>());
+            var mapper = new Mapper(config);
+            var result = mapper.Map<Login, LoginModel>(DataAccessFactory.LoginDataAccess().GetByEmail(email));
+            return result;
+            
+        }
     }
 }

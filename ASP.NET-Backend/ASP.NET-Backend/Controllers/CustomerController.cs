@@ -7,13 +7,14 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using ASP.NET_Backend.Auth;
 
 namespace ASP.NET_Backend.Controllers
 {
     [EnableCors("*", "*", "*")]
     public class CustomerController:ApiController
     {
-        
+        [Authenticator]
         [Route("api/CustomerService/AllCustomers")]
         [HttpGet]
         public List<CustomerModel> GetAll()

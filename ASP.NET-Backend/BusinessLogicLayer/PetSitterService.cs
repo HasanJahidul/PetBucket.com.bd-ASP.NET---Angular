@@ -45,12 +45,7 @@ namespace BusinessLogicLayer
         }
         public static void Delete(int id)
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Petsitter, PetSitterModel>());
-            var mapper = config.CreateMapper();
-            var petsitter = DataAccessFactory.PetSitterDataAccess().GetById(id);
-            var result = mapper.Map<Petsitter, PetSitterModel>(petsitter);
-
-
+            DataAccessFactory.PetSitterDataAccess().Delete(id);
         }
     }
 }
