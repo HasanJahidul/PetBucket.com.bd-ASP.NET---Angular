@@ -19,7 +19,7 @@ namespace DataAccessLayer
             this.Tokens = new HashSet<Token>();
         }
     
-        public int id { get; set; }
+        public int login_id { get; set; }
         public string email { get; set; }
         public string password { get; set; }
         public string type { get; set; }

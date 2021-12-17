@@ -40,9 +40,9 @@
   </EntityType>
   <EntityType Name="Logins">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="login_id" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="email" Type="nchar" MaxLength="100" Nullable="false" />
     <Property Name="password" Type="nchar" MaxLength="100" Nullable="false" />
     <Property Name="type" Type="nchar" MaxLength="10" Nullable="false" />
@@ -110,7 +110,7 @@ warning 6002: The table/view 'PetBucket.dbo.Petsitters' does not have a primary 
     <End Role="Tokens" Type="Self.Tokens" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Logins">
-        <PropertyRef Name="id" />
+        <PropertyRef Name="login_id" />
       </Principal>
       <Dependent Role="Tokens">
         <PropertyRef Name="login_id" />

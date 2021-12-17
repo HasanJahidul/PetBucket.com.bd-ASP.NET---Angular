@@ -24,7 +24,7 @@ namespace ASP.NET_Backend.Controllers
         {
             if (LoginService.GetByEmail(customer.email)!=null)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, "Email is Already Resitered");
+                return Request.CreateResponse(HttpStatusCode.OK, "Email is Already Registered");
             }
             else
             {
@@ -55,7 +55,7 @@ namespace ASP.NET_Backend.Controllers
                     throw ex;
                 } */
                 }
-                return Request.CreateResponse(HttpStatusCode.OK, "Registered");
+                return Request.CreateResponse(HttpStatusCode.NoContent, "Registered");
 
             }
             
@@ -76,7 +76,7 @@ namespace ASP.NET_Backend.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid token to logout");
         }
-        [Route("api/login")]
+        [Route("api/Login")]
         [HttpPost]
         public HttpResponseMessage Login(LoginModel login)
         {

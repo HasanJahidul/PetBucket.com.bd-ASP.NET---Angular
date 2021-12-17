@@ -41,9 +41,9 @@
   </EntityType>
   <EntityType Name="Login">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="login_id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="password" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
@@ -112,7 +112,7 @@
     <End Role="Tokens" Type="Self.Token" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Logins">
-        <PropertyRef Name="id" />
+        <PropertyRef Name="login_id" />
       </Principal>
       <Dependent Role="Tokens">
         <PropertyRef Name="login_id" />

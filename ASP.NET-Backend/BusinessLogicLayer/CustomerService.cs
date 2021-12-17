@@ -11,10 +11,10 @@ namespace BusinessLogicLayer
 {
     public class CustomerService
     {
-        
+
         public static List<CustomerModel> GetAll()
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<Customer, CustomerModel>());
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Customer, CustomerModel>()); 
             var mapper = config.CreateMapper();
             var customers = DataAccessFactory.CustomerDataAccess().GetAll();
             var result = mapper.Map<List<Customer>, List<CustomerModel>>(customers);

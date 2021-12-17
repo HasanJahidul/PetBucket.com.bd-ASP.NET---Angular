@@ -31,7 +31,7 @@ namespace DataAccessLayer
             {
                 string token = Guid.NewGuid().ToString();
                 t = new Token();
-                t.login_id = u.id;
+                t.login_id = u.login_id;
                 t.AccessToken = token;
                 t.CreatedAt = DateTime.Now;
                 db.Tokens.Add(t);

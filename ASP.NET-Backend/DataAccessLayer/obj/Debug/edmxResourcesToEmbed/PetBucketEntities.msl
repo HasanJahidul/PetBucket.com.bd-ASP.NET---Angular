@@ -45,7 +45,7 @@
     <EntitySetMapping Name="Logins">
       <EntityTypeMapping TypeName="PetBucketModel.Login">
         <MappingFragment StoreEntitySet="Logins">
-          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login_id" ColumnName="login_id" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="type" ColumnName="type" />

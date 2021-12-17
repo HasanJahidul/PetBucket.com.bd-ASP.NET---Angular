@@ -1,16 +1,21 @@
+import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
-  const { register,formState: { errors },handleSubmit
-  } = useForm({
-    mode: "onChange" // "onChange"
-    
-  });
+  
+  const { register, formState: { errors }, handleSubmit } = useForm();
 
-const login = (data) =>{
+const log = async (data) =>{
   //alert(JSON.stringify(data));
   console.log(data);
+  const res= axios.post('https://localhost:44398/api/Login',{
+    email: data.email,
+    password: data.password
+  });
+  console.log(res);
+
+
 }
   //console.log(userData);
   return (
@@ -27,17 +32,16 @@ const login = (data) =>{
 
             {/* <!-- Login Form --> */}
            
-             <form onSubmit={handleSubmit(login)}>
+             <form onSubmit={handleSubmit(log)}>
 
                 <input 
                   name="email" 
                   type="text" 
                   placeholder="Enter your email"  
-                  {...register('name', { required: true})}
-                  
+                  {...register('email', { required: true })}
                   />
-                {errors.name && errors.name.type === "required" && (
-                  <span className='erralert' ><br/>This is required <br/></span>
+                {errors.email && errors.email.type === "required" && (
+                  <span className='erralert' ><br/>Email is required <br/></span>
                 )}
                 
                  <input 
@@ -46,9 +50,9 @@ const login = (data) =>{
                  placeholder="Enter your password"
                  {...register('password', { required: true})}
                  /> 
-                 {errors.name && errors.name.type === "required" && (
-                  <span className='erralert' ><br/>This is required <br/></span>
-                )}
+                {errors.password && errors.password.type === "required" && (
+                          <span className='erralert' ><br/>Password is required <br/></span>
+                        )}
                 
                 <br />
 

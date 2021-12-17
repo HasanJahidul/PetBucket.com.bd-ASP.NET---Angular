@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1db812662b944839b63187993d602ebf" Name="Diagram1">
+      <Diagram DiagramId="de1274f9d3b146f1855c5ae99b2d0e18" Name="Diagram1">
         <EntityTypeShape EntityType="PetBucketModel.Admin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PetBucketModel.Agency" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PetBucketModel.Customer" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PetBucketModel.Login" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetBucketModel.Login" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="PetBucketModel.RequestTable" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="PetBucketModel.Token" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PetBucketModel.Petsitter" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PetBucketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="PetBucketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admins">
           <Key>
             <PropertyRef Name="id" />
@@ -45,9 +45,9 @@
         </EntityType>
         <EntityType Name="Logins">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="login_id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="email" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="password" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="type" Type="nchar" MaxLength="10" Nullable="false" />
@@ -115,7 +115,7 @@ warning 6002: The table/view 'PetBucket.dbo.Petsitters' does not have a primary 
           <End Role="Tokens" Type="Self.Tokens" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Logins">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="login_id" />
             </Principal>
             <Dependent Role="Tokens">
               <PropertyRef Name="login_id" />
@@ -150,7 +150,8 @@ FROM [dbo].[Petsitters] AS [Petsitters]</DefiningQuery>
             <End Role="Tokens" EntitySet="Tokens" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PetBucketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -195,9 +196,9 @@ FROM [dbo].[Petsitters] AS [Petsitters]</DefiningQuery>
         </EntityType>
         <EntityType Name="Login">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="login_id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
@@ -266,7 +267,7 @@ FROM [dbo].[Petsitters] AS [Petsitters]</DefiningQuery>
           <End Role="Tokens" Type="Self.Token" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Logins">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="login_id" />
             </Principal>
             <Dependent Role="Tokens">
               <PropertyRef Name="login_id" />
@@ -340,7 +341,7 @@ FROM [dbo].[Petsitters] AS [Petsitters]</DefiningQuery>
           <EntitySetMapping Name="Logins">
             <EntityTypeMapping TypeName="PetBucketModel.Login">
               <MappingFragment StoreEntitySet="Logins">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login_id" ColumnName="login_id" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="type" ColumnName="type" />

@@ -8,10 +8,10 @@ namespace BusinessEntityLayer
 {
     public class LoginModel
     {
-        public int id { get; set; }
+        public int login_id { get; set; }
         public string email { get; set; }
         public string password { get; set; }
         public string type { get; set; }
-        public virtual LoginModel Login { get; set; }
+        public virtual ICollection<TokenModel> Tokens { get; set; }
     }
 }

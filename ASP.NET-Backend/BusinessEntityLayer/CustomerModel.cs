@@ -15,6 +15,8 @@ namespace BusinessEntityLayer
         public string address { get; set; }
         public string nid { get; set; }
         public string phone { get; set; }
-       
+        public int customer_id { get; set; }
+        public virtual RequestTableModel requestTable { get; set; }
+
     }
 }

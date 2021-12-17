@@ -26,32 +26,21 @@ import { useForm } from "react-hook-form";
     const res = await axios.post('https://localhost:44398/api/Register',
     {name:name, phone: phone, address: address,
       email: email,nid: nid, 
-      password: password}).then(
-        (response) => {
-          console.log(response);
-          setResponse(response);
-        }    
-      );
-      //setResponse(res);
-      console.log(response);
-    // if(res.status === 200){
-    //   reset();
-    //     toast.success("Registration Successful");
-        
-    //     //setTimeout(() => { history.push('/login'); }, 3000);
-
-    // }if(res.status === 204){
-    //   reset();
-    //   toast.success("Registration Successful");
+      password: password});
       
-    //     //setTimeout(() => { history.push('/login'); }, 3000);
+      console.log(res);
+    if(res.status === 202){
+      reset();
+      toast.success("Registration Successful");
+      
+        //setTimeout(() => { history.push('/login'); }, 3000);
         
-    // }if(res.status === 400){
-    //   toast.error("Email is already registered");    
-    // }
-    // else{
-    //     toast.error("An error occured to while registering");
-    // }
+    }if(res.status === 400){
+      toast.error(" is already registered");    
+    }
+    else{
+        toast.error(res.data);
+    }
      
     }
 
