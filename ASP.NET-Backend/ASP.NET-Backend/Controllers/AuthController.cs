@@ -29,7 +29,8 @@ namespace ASP.NET_Backend.Controllers
             else
             {
                 CustomerService.Add(customer);
-                LoginService.Add(new LoginModel { email = customer.email, password = customer.password, type = "Customer" });
+                var c=CustomerService.GetByEmail(customer.email);
+                LoginService.Add(new LoginModel { email = customer.email, password = customer.password, type = "Customer",cus_id=c.id });
                 {/* string to = customer.email; //To address    
                 string from = "jahidul0hasan@gmail.com"; //From address    
                 MailMessage message = new MailMessage(from, to);

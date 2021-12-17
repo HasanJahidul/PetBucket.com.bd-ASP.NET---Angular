@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,7 @@ namespace BusinessEntityLayer
         public string address { get; set; }
         public string nid { get; set; }
         public string phone { get; set; }
-        public int customer_id { get; set; }
-        public virtual RequestTableModel requestTable { get; set; }
 
+        public int customer_id { get; set; }
     }
 }

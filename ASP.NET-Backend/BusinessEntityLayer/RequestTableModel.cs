@@ -21,6 +21,5 @@ namespace BusinessEntityLayer
         public string requestdetails { get; set; }
         public decimal amount { get; set; }
     
-        public virtual CustomerModel Customer { get; set; }
     }
 }

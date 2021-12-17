@@ -23,6 +23,8 @@ namespace DataAccessLayer
         public string email { get; set; }
         public string password { get; set; }
         public string type { get; set; }
+        public Nullable<int> cus_id { get; set; }
+        public Nullable<int> adm_id { get; set; }
     
         public virtual ICollection<Token> Tokens { get; set; }
     }

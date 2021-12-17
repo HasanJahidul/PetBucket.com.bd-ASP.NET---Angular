@@ -1,8 +1,27 @@
 import React from 'react'
+import { authAxios } from '../../auth/Token';
+import {removeSession} from '../../auth/Session';
+import {ToastContainer,toast,Zoom} from 'react-toastify';
+import { useHistory } from "react-router-dom";
 
 const CustomerSidebar = () => {
+    let history = useHistory();
+    const handleLogout = () => {
+        removeSession();
+        const res =authAxios.get('https://localhost:44398/api/logout');
+        console.log(res);
+        history.push('/login');
+        // if (res.status===200) {
+        //     
+        // }else{
+        
+        //     toast.error(<div> Logout Failed🤷‍♂️</div>);
+        // }
+        
+      }
     return (
         <>
+        <ToastContainer position="top-right" theme='dark' transition={Zoom} />
     <div class="sidebar-container">
     <div class="sidebar-logo">
         <img src="https://cdn.discordapp.com/attachments/800404133731369023/904061372730585128/petbucket.png" alt='' />
@@ -25,9 +44,8 @@ const CustomerSidebar = () => {
             </a>
         </li>
         <li>
-            <a href="/Auth/Logout">
+            <a onClick={handleLogout}>
                 <i class="fa fa-tachometer" aria-hidden="true"></i>Log Out
-               
             </a>
         </li>
 

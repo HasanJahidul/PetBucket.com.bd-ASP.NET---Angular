@@ -23,8 +23,9 @@ namespace BusinessLogicLayer
             if (token != null)
             {
                 tokenModel.AccessToken = token.AccessToken;
-                tokenModel.ExpiredAt = token.ExpiredAt;
                 tokenModel.login_id = token.login_id;
+                tokenModel.userId = token.userId;
+                tokenModel.type = token.type;
             }
             return tokenModel;
            

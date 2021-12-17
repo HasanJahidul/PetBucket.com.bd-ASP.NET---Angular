@@ -11,10 +11,12 @@ using ASP.NET_Backend.Auth;
 
 namespace ASP.NET_Backend.Controllers
 {
+    
     [EnableCors("*", "*", "*")]
+    //[Authenticator]
     public class CustomerController:ApiController
     {
-        [Authenticator]
+        
         [Route("api/CustomerService/AllCustomers")]
         [HttpGet]
         public List<CustomerModel> GetAll()

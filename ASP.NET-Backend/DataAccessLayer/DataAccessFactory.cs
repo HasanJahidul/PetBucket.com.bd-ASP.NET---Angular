@@ -17,6 +17,10 @@ namespace DataAccessLayer
         {
             return new CustomerRepo(db);
         }
+        public static ILogRepository<Customer, string>CusDataAccess()
+        {
+            return new CustomerRepo(db);
+        }
 
         public static IAdminRepository<Admin, int> AdminDataAccess()
         {
@@ -44,9 +48,11 @@ namespace DataAccessLayer
         {
             return new TokenRepo(db);
         }
+
         public static IAuth AuthDataAccess()
         {
             return new LoginRepo(db);
         }
+        
     }
 }

@@ -46,6 +46,8 @@
     <Property Name="email" Type="nchar" MaxLength="100" Nullable="false" />
     <Property Name="password" Type="nchar" MaxLength="100" Nullable="false" />
     <Property Name="type" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="cus_id" Type="int" />
+    <Property Name="adm_id" Type="int" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'PetBucket.dbo.Petsitters' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -92,6 +94,8 @@ warning 6002: The table/view 'PetBucket.dbo.Petsitters' does not have a primary 
     <Property Name="AccessToken" Type="nchar" MaxLength="100" Nullable="false" />
     <Property Name="CreatedAt" Type="datetime" Nullable="false" />
     <Property Name="ExpiredAt" Type="datetime" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="type" Type="nchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <Association Name="FK_RequestTables_Customers">
     <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />

@@ -63,7 +63,7 @@ const PetService = (props) => {
     return (
         <>
         <CustomerSidebar/>
-        <ToastContainer position="top-right" theme='dark' transition={Zoom} />
+        
           
     <div class="content-container">
 

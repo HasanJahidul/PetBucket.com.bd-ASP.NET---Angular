@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { setSession } from './Session';
 
 const Login = () => {
   
@@ -8,13 +9,19 @@ const Login = () => {
 
 const log = async (data) =>{
   //alert(JSON.stringify(data));
-  console.log(data);
-  const res= axios.post('https://localhost:44398/api/Login',{
+  //console.log(data);
+  const res= await
+   axios.post('https://localhost:44398/api/Login',{
     email: data.email,
     password: data.password
   });
-  console.log(res);
+  setSession(res.data);
 
+  // console.log(res.data.AccessToken);
+   console.log(res.data.type);
+  if(res.data.type==="Customer  "){
+    window.location.href="/CustomerDashboard";
+  }
 
 }
   //console.log(userData);

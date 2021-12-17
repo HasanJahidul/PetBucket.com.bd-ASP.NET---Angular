@@ -1,18 +1,46 @@
 import CustomerSidebar from '../layouts/sidebar/CustomerSidebar'
 import React, { useEffect, useState } from "react";
+import { authAxios } from '../auth/Token';
+import {getSession} from '../auth/Session';
 
-const Dashboard = () => {
+ const Dashboard = () => {
+    const user = getSession();
   const [search, setSearch] = useState('');
   const [reqList, setReqList] = useState([]);
+  const [response, setResponse] = useState([]);
+  const customer_id=user.userId;
+  console.log(customer_id);
+  
+    const fetchData = async () => {
+        try{
+            // const res = await authAxios.get(`PetService/Get/${customer_id}`);
+            // setReqList(res.data);
+            // console.log(res.data);
+            await authAxios.get(`PetService/GetAll`).then(
+                (response) => {
+                    setReqList(response.data);
+                    setResponse(response);
+                    console.log(response);
+                }
+            );
+
+        }catch(err){
+            console.log(err);
+        }
+    }
     useEffect(() => {
-        fetch(`https://localhost:44398/api/PetService/GetAll`).then(
-            (response) => {
-                response.json().then((result) => {
-                    setReqList(result);
-                });
-            }
-        );
+        // fetch(`https://localhost:44398/api/PetService/GetAll`).then(
+        //     (response) => {
+        //         response.json().then((result) => {
+        //             setReqList(result);
+        //         });
+        //     }
+        // );
+        fetchData();
+        
+
     }, []);
+    console.log(response);
     // console.log(reqList);
     return (
         <>

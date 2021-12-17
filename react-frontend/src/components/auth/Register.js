@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
     //Validation
     //const { register, formState: { errors }, getValues, handleSubmit} = useForm();
     const { register, formState: { errors }, handleSubmit,reset,getValues, } = useForm();
-    const [response, setResponse] = React.useState(null);
+
     
     //State
     const history = useHistory();
@@ -29,7 +29,7 @@ import { useForm } from "react-hook-form";
       password: password});
       
       console.log(res);
-    if(res.status === 202){
+    if(res.status === 204){
       reset();
       toast.success("Registration Successful");
       
@@ -40,9 +40,8 @@ import { useForm } from "react-hook-form";
     }
     else{
         toast.error(res.data);
-    }
-     
-    }
+    }  
+  }
 
     return (
       <>

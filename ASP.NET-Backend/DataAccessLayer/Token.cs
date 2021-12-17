@@ -19,6 +19,8 @@ namespace DataAccessLayer
         public string AccessToken { get; set; }
         public System.DateTime CreatedAt { get; set; }
         public Nullable<System.DateTime> ExpiredAt { get; set; }
+        public int userId { get; set; }
+        public string type { get; set; }
     
         public virtual Login Login { get; set; }
     }

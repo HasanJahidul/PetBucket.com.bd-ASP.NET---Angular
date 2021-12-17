@@ -49,6 +49,14 @@ namespace BusinessLogicLayer
             DataAccessFactory.CustomerDataAccess().Delete(id);
            
         }
+        public static CustomerModel GetByEmail(string email)
+        {
+            var config = new MapperConfiguration(c => c.CreateMap<Customer, CustomerModel>());
+            var mapper = new Mapper(config);
+            var customer = DataAccessFactory.CusDataAccess().GetByEmail(email);
+            var result = mapper.Map<Customer, CustomerModel>(customer);
+            return result;
+        }
         
     }
 }

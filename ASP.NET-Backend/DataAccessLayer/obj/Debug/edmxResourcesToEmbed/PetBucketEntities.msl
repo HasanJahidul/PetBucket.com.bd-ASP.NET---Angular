@@ -49,6 +49,8 @@
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="cus_id" ColumnName="cus_id" />
+          <ScalarProperty Name="adm_id" ColumnName="adm_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -76,6 +78,8 @@
           <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
           <ScalarProperty Name="ExpiredAt" ColumnName="ExpiredAt" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="type" ColumnName="type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 { 
-    public class CustomerRepo : IRepository<Customer, int>
+    public class CustomerRepo : IRepository<Customer, int>,ILogRepository<Customer,string>
     {
         PetBucketEntities db;
         public CustomerRepo(PetBucketEntities db)
@@ -40,6 +40,16 @@ namespace DataAccessLayer
             var req = db.Customers.FirstOrDefault(x => x.id == id);
             db.Customers.Remove(req);
             db.SaveChanges();
+        }
+
+        public void AddToLogin(Customer p)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Customer GetByEmail(string email)
+        {
+            return db.Customers.FirstOrDefault(x => x.email == email);
         }
     }
 }

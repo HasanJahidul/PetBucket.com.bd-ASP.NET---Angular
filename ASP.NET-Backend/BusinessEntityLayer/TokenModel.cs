@@ -13,6 +13,10 @@ namespace BusinessEntityLayer
         public string AccessToken { get; set; }
         public System.DateTime CreatedAt { get; set; }
         public Nullable<System.DateTime> ExpiredAt { get; set; }
-        public virtual LoginModel login { get; set; }
+        public int userId { get; set; }
+        public string type { get; set; }
+
+        public virtual LoginModel Login { get; set; }
+
     }
 }

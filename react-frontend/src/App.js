@@ -1,5 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
+
 import './assets/css/register.css';
 import './App.css'
 import './assets/css/Sidebar.css';
@@ -36,27 +39,27 @@ function App() {
     <Router>
     <Switch>
       {/* Public Routes */}
-    <Route exact path="/" >
+    <PublicRoute exact path="/" >
       <LandingPage />
-    </Route>  
-    <Route
+    </PublicRoute>  
+    <PublicRoute
       exact path="/register"
         children=
         {
           <Register/>
         }
-    ></Route>
+    ></PublicRoute>
 
-    <Route exact path="/login" >
+    <PublicRoute exact path="/login" >
       <Login />
-    </Route>
+    </PublicRoute>
 
      {/* Customer Routes */}
-    <Route exact path="/CustomerDashboard" >
+    <PrivateRoute exact path="/CustomerDashboard" >
       <CustomerDashboard />
-    </Route>
+    </PrivateRoute>
 
-    <Route
+    <PrivateRoute
       exact path="/customer/edit-profile"
         children=
         {
@@ -65,10 +68,10 @@ function App() {
             buttonName="save"
           />
         }
-    ></Route>
+    ></PrivateRoute>
 
   {/* Pet services for customer */}
-    <Route exact path="/PetService/DogWalking"
+    <PrivateRoute exact path="/PetService/DogWalking"
         children=
         {
           <PetService
@@ -76,8 +79,8 @@ function App() {
             buttonName="Book Service"
           />
         }
-      ></Route>
-    <Route exact path="/PetService/PetDayCare"
+      ></PrivateRoute>
+    <PrivateRoute exact path="/PetService/PetDayCare"
         children=
         {
           <PetService
@@ -85,8 +88,8 @@ function App() {
             buttonName="Book Service"
           />
         }
-      ></Route>
-      <Route exact path="/PetService/PetTaxi"
+      ></PrivateRoute>
+      <PrivateRoute exact path="/PetService/PetTaxi"
         children=
         {
           <PetService
@@ -94,8 +97,8 @@ function App() {
             buttonName="Book Service"
           />
         }
-      ></Route>
-      <Route exact path="/PetService/PetSitting"
+      ></PrivateRoute>
+      <PrivateRoute exact path="/PetService/PetSitting"
         children=
         {
           <PetService
@@ -103,8 +106,8 @@ function App() {
             buttonName="Book Service"
           />
         }
-      ></Route>
-      <Route exact path="/PetService/PetGromming"
+      ></PrivateRoute>
+      <PrivateRoute exact path="/PetService/PetGromming"
         children=
         {
           <PetService
@@ -112,8 +115,8 @@ function App() {
             buttonName="Book Service"
           />
         }
-      ></Route>
-      <Route exact path="/PetService/PetTraining"
+      ></PrivateRoute>
+      <PrivateRoute exact path="/PetService/PetTraining"
         children=
         {
           <PetService
@@ -121,7 +124,7 @@ function App() {
             buttonName="Book Service"
           />
         }
-      ></Route>
+      ></PrivateRoute>
 
 
     {/* =========== admin=================*/}

@@ -10,12 +10,15 @@ using System.IO;
 using System.Collections.Specialized;
 using System.Web;
 using System.Web.Http.Cors;
+using ASP.NET_Backend.Auth;
 
 namespace ASP.NET_Backend.Controllers
 {
+    [Authenticator]
     [EnableCors("*", "*", "*")]
     public class PetServiceController : ApiController
     {
+        
         [Route("api/PetService/GetAll")]
         [HttpGet]
         public List<RequestTableModel> GetAll()

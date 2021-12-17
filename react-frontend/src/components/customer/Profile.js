@@ -1,12 +1,15 @@
   // core components
   import CustomerSidebar from "../layouts/sidebar/CustomerSidebar.js";
   import React, { useEffect, useState } from "react";
-  import axios from 'axios';
+  import { authAxios } from '../auth/Token';
+import {getSession} from '../auth/Session';
 import {ToastContainer,toast,Zoom} from 'react-toastify';
 
 
   const Profile = (props) => {
-    var userID=1;
+    var user=getSession();
+    var userID=user.userId;
+    console.log(userID);
   const [userData, setUserData] = useState({
     name: '',
     phone: '',
@@ -52,7 +55,7 @@ import {ToastContainer,toast,Zoom} from 'react-toastify';
       const name = userData.name.toString();
       const email = userData.email.toString();
       const nid = userData.nid.toString();
-      const res = await axios.put('https://localhost:44398/api/CustomerService/EditCustomer',
+      const res = await authAxios.put('https://localhost:44398/api/CustomerService/EditCustomer',
         {id:userID,name:name, phone: phone, address: address,
           email: email, nid: nid,password:userData.password});
         if(res.status === 200){

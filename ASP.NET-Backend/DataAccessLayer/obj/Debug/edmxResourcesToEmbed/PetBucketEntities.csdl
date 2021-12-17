@@ -47,6 +47,8 @@
     <Property Name="email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="password" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="cus_id" Type="Int32" />
+    <Property Name="adm_id" Type="Int32" />
     <NavigationProperty Name="Tokens" Relationship="Self.FK_Tokens_Logins1" FromRole="Logins" ToRole="Tokens" />
   </EntityType>
   <EntityType Name="RequestTable">
@@ -74,6 +76,8 @@
     <Property Name="AccessToken" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ExpiredAt" Type="DateTime" Precision="3" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Login" Relationship="Self.FK_Tokens_Logins1" FromRole="Tokens" ToRole="Logins" />
   </EntityType>
   <EntityType Name="Petsitter">
