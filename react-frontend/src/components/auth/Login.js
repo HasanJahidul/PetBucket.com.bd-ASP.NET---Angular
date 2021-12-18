@@ -16,12 +16,14 @@ const log = async (data) =>{
     password: data.password
   });
   setSession(res.data);
-
+  window.location.href="/Dashboard";
   // console.log(res.data.AccessToken);
    console.log(res.data.type);
-  if(res.data.type==="Customer  "){
-    window.location.href="/CustomerDashboard";
-  }
+  // if(res.data.type==="Customer  "){
+  //   window.location.href="/CustomerDashboard";
+  // }if (res.data.type==="Admin     "){
+  //   window.location.href="/AdminDashboard";
+  // }
 
 }
   //console.log(userData);

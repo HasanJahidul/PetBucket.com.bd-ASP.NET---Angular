@@ -1,6 +1,23 @@
 import React from 'react'
+import { authAxios } from '../../auth/Token';
+import {removeSession} from '../../auth/Session';
+import { useHistory } from "react-router-dom";
 
 const AdminSidebar = () => {
+    let history = useHistory();
+    const handleLogout = () => {
+        removeSession();
+        const res =authAxios.get('https://localhost:44398/api/logout');
+        console.log(res);
+        history.push('/login');
+        // if (res.status===200) {
+        //     
+        // }else{
+        
+        //     toast.error(<div> Logout Failed🤷‍♂️</div>);
+        // }
+        
+      }
     return (
         <div>
             <div class="sidebar-container">

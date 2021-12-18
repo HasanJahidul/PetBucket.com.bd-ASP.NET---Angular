@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { authAxios } from '../auth/Token';
 import {getSession} from '../auth/Session';
 
- const Dashboard = () => {
+ const CustomerDashboard = () => {
     const user = getSession();
   const [search, setSearch] = useState('');
   const [reqList, setReqList] = useState([]);
@@ -42,7 +42,8 @@ import {getSession} from '../auth/Session';
     }, []);
     console.log(response);
     // console.log(reqList);
-    return (
+    return  (
+
         <>
         <CustomerSidebar/>  
      
@@ -334,4 +335,4 @@ import {getSession} from '../auth/Session';
     )
 }
 
-export default Dashboard
+export default CustomerDashboard
