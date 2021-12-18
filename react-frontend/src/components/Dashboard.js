@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Redirect } from 'react-router-dom'
 import CustomerDashboard from './customer/CustomerDashboard'
 import AdminDashboard from './admin/AdminDashboard'
 import { getSession } from './auth/Session'
